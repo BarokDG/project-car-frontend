@@ -1,12 +1,17 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import Navbar from '../components/Navbar';
+import Car from '../components/Car';
 export default function CarPage(){
     return (
         <>
-            <h1>This is the Car page</h1>
+            <Navbar/>
             <Link to="/">
                 Home
             </Link>
+            <Car/>
+            <Car/>
+            <Car/>
         </>
     );
 }
