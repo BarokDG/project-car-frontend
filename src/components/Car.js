@@ -1,15 +1,26 @@
 // import { Button } from 'bootstrap';
 import React, { useState, useEffect } from 'react';
 import { Card, Button, Row, Col, Carousel } from 'react-bootstrap'
+import axios from "../axios"
 export default function Car() {
   const [carInfo, setCarInfo] = useState([]);
 
+  useEffect(()=>{
+    axios.get("cars").then((res)=>{
+      setCarInfo(res.data);
+    
+    })
+  }, []);
+ 
   return (
     <>
-      <Row xs={1} md={4} className="g-4">
-        {Array.from({ length: 3 }).map((_, idx) => (
-          <Col>
-            <Card style={{ width: '18rem' }}>
+      <Row xs={1} md={3} className="g-3">
+       
+          
+  {carInfo.map(({
+    make, year, price, transmission, comment, condition,commission
+  })=>(<Col>
+            <Card style={{ width: '25rem' }}>
 
             <Carousel variant="dark">
             <Carousel.Item>
@@ -30,18 +41,32 @@ export default function Car() {
 
 
               <Card.Body>
-                <Card.Title>Toyota</Card.Title>
+                <Card.Title>{make}</Card.Title>
                 <Card.Text>
-                  2021
-                  800,000
-                  Excellent Condition
-                  2% commission
+                  {year}
+                </Card.Text>
+                <Card.Text>
+                  {price}
+                </Card.Text>
+                <Card.Text>
+                  {transmission}
+                </Card.Text>
+                <Card.Text>
+                  {comment}
+                </Card.Text>
+                <Card.Text>
+                  {condition}
+                </Card.Text>
+                <Card.Text>
+                  {commission}
                 </Card.Text>
                 <Button variant="outline-secondary">Read more</Button>
               </Card.Body>
             </Card>
-          </Col>
-        ))}
+            </Col>
+   ) )}
+          
+     
       </Row>
     </>
   );
