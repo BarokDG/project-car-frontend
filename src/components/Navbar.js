@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = styled.div`
@@ -53,12 +54,13 @@ const Menu = styled.div`
 const MenuLink = styled.a`
     padding: 1rem 2rem;
     cursor: pointer;
-    color: white;
-    font-weight: 900;
+    color: #7b7fda;
+    font-weight: 500;
+    font-size: 1rem;
     text-align: center;
     text-decoration: none;
     &:hover {
-        color: #7b7fda;
+        color: white;
     }
 `
 
@@ -67,16 +69,17 @@ export default function Navbar() {
     return (
         <>
             <Nav>
-                <Logo href="">Mekina<span>App</span></Logo>
+                <Logo href="/">Mekina<span>App</span></Logo>
                 <Hamburger onClick={() => setisOpen(!isOpen)}>
                     <span />
                     <span />
                     <span />
                 </Hamburger>
                 <Menu isOpen={isOpen}>
-                    <MenuLink href="">All Cars</MenuLink>
+                    <MenuLink href="/cars">All Cars</MenuLink>
                     <MenuLink href="">Categories</MenuLink>
                     <MenuLink href="">Something Else</MenuLink>
+                    
                 </Menu>
             </Nav>
         </>
