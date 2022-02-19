@@ -11,19 +11,19 @@ export default function Car() {
           <Col>
             <Card style={{ width: '18rem' }}>
 
-
-              <Carousel variant="dark">
-                <Carousel.Item>
+            <Carousel variant="dark">
+            <Carousel.Item>
                   <Card.Img variant="top" src="https://image.shutterstock.com/image-photo/gumushane-turkey-25-september-pistachio-260nw-1520035418.jpg" />
 
                 </Carousel.Item>
-                <Carousel.Item>
-                  <Card.Img variant="top" src="https://image.shutterstock.com/image-photo/gumushane-turkey-25-september-pistachio-260nw-1520035418.jpg" />
+  <Carousel.Item>
+  <Card.Img variant="top" src="https://pictures.topspeed.com/IMG/crop_webp/200705/2007-hyundai-getz-11_1920x1080.webp" />
 
-                </Carousel.Item>
-                <Carousel.Item>
-                  <Card.Img variant="top" src="https://image.shutterstock.com/image-photo/gumushane-turkey-25-september-pistachio-260nw-1520035418.jpg" />
-
+  </Carousel.Item>
+  <Carousel.Item>
+  <Card.Img variant="top" src="https://carsalesbase.com/wp-content/uploads/2014/02/Hyundai-Getz-auto-sales-statistics-Europe.png" />
+             
+               
                 </Carousel.Item>
               </Carousel>
 
