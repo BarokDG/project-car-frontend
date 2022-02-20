@@ -1,73 +1,85 @@
 // import { Button } from 'bootstrap';
-import React, { useState, useEffect } from 'react';
-import { Card, Button, Row, Col, Carousel } from 'react-bootstrap'
-import axios from "../axios"
-export default function Car() {
-  const [carInfo, setCarInfo] = useState([]);
+import React, { useState } from "react";
+import { Row, Col, Carousel } from "react-bootstrap";
+import Modal from "./Modal";
+import {
+  CarTitle,
+  CarContainer,
+  CarImage,
+  CarDate,
+  CarDescription,
+  ActionButton,
+} from "../styles/Car.style";
 
-  useEffect(()=>{
-    axios.get("cars").then((res)=>{
-      setCarInfo(res.data);
-    
-    })
-  }, []);
- 
+function Car(props) {
+  const [active, setActive] = useState(false);
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
   return (
     <>
-      <Row xs={1} md={3} className="g-3">
-       
-          
-  {carInfo.map(({
-    make, year, price, transmission, comment, condition,commission
-  })=>(<Col>
-            <Card style={{ width: '25rem' }}>
-
-            <Carousel variant="dark">
-            <Carousel.Item>
-                  <Card.Img variant="top" src="https://image.shutterstock.com/image-photo/gumushane-turkey-25-september-pistachio-260nw-1520035418.jpg" />
-
-                </Carousel.Item>
-  <Carousel.Item>
-  <Card.Img variant="top" src="https://pictures.topspeed.com/IMG/crop_webp/200705/2007-hyundai-getz-11_1920x1080.webp" />
-
-  </Carousel.Item>
-  <Carousel.Item>
-  <Card.Img variant="top" src="https://carsalesbase.com/wp-content/uploads/2014/02/Hyundai-Getz-auto-sales-statistics-Europe.png" />
-             
-               
-                </Carousel.Item>
-              </Carousel>
-
-
-
-              <Card.Body>
-                <Card.Title>{make}</Card.Title>
-                <Card.Text>
-                  {year}
-                </Card.Text>
-                <Card.Text>
-                  {price}
-                </Card.Text>
-                <Card.Text>
-                  {transmission}
-                </Card.Text>
-                <Card.Text>
-                  {comment}
-                </Card.Text>
-                <Card.Text>
-                  {condition}
-                </Card.Text>
-                <Card.Text>
-                  {commission}
-                </Card.Text>
-                <Button variant="outline-secondary">Read more</Button>
-              </Card.Body>
-            </Card>
-            </Col>
-   ) )}
-          
-     
+      <Row md={3} xs={1} sm={2}>
+        {props.cars.map((car) => {
+          return (
+            <>
+              <Col>
+                <CarContainer>
+                  <CarImage src={car.image} />
+                  <CarTitle>
+                    {car.make} {car.model}
+                  </CarTitle>
+                  <CarDate>{car.year} model</CarDate>
+                  <CarDescription>
+                    {car.transmission} Transmission
+                    <br /> {car.price} <br /> {car.commission * 100}% commission
+                    <br /> {car.comment}
+                  </CarDescription>
+                  <ActionButton onClick={() => setActive(true)}>
+                    <i class="fa fa-user icon"></i> Contact Buyer
+                  </ActionButton>
+                  <Modal
+                    active={active}
+                    hideModal={() => setActive(false)}
+                    title="Modal Title"
+                    car={car}
+                  >
+                    <Carousel activeIndex={index} onSelect={handleSelect}>
+                      <Carousel.Item>
+                        <img
+                          className="d-block w-100"
+                          src="https://cdn.pixabay.com/photo/2021/10/29/12/25/toyota-gr-yaris-6751755_960_720.jpg"
+                          alt="First slide"
+                        />
+                      </Carousel.Item>
+                      <Carousel.Item>
+                        <img
+                          className="d-block w-100"
+                          src="https://cdn.pixabay.com/photo/2014/05/18/19/13/toyota-347288_960_720.jpg"
+                          alt="Second slide"
+                        />
+                      </Carousel.Item>
+                      <Carousel.Item>
+                        <img
+                          className="d-block w-100"
+                          src="https://cdn.pixabay.com/photo/2019/06/29/09/51/suzuki-sx4-4305877_960_720.jpg"
+                          alt="Third slide"
+                        />
+                      </Carousel.Item>
+                    </Carousel>
+                    <CarDescription>
+                      Contact Number: {car.number}
+                    </CarDescription>
+                  </Modal>
+                </CarContainer>
+              </Col>
+            </>
+          );
+        })}
       </Row>
     </>
   );
 }
+
+export default Car;

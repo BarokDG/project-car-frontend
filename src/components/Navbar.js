@@ -78,7 +78,7 @@ export default function Navbar() {
                 <Menu isOpen={isOpen}>
                     <MenuLink href="/cars">All Cars</MenuLink>
                     <MenuLink href="">Categories</MenuLink>
-                    <MenuLink href="">Something Else</MenuLink>
+                    <MenuLink href="/favs">Your Cars</MenuLink>
                     
                 </Menu>
             </Nav>
