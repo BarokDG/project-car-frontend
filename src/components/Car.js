@@ -1,7 +1,8 @@
 // import { Button } from 'bootstrap';
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { Row, Col, Carousel } from "react-bootstrap";
 import Modal from "./Modal";
+import {getMultipleFiles} from '../data/api';
 import {
   CarTitle,
   CarContainer,
@@ -14,26 +15,40 @@ import {
 function Car(props) {
   const [active, setActive] = useState(false);
   const [index, setIndex] = useState(0);
+  const [multipleFiles, setMultipleFiles] = useState([]);
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
+
+  const getMultipleFilesList = async () => {
+    try {
+        const fileslist = await getMultipleFiles();
+        setMultipleFiles(fileslist);
+        console.log(multipleFiles);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    getMultipleFilesList();
+  }, []);
   return (
     <>
       <Row md={3} xs={1} sm={2}>
-        {props.cars.map((car) => {
+      {multipleFiles.map((car, index) => {
           return (
             <>
               <Col>
                 <CarContainer>
-                  <CarImage src={car.image} />
+                  <CarImage src={`http://localhost:5000/${car.files[0].filePath}`} />
                   <CarTitle>
-                    {car.make} {car.model}
+                    {car.make} 
                   </CarTitle>
                   <CarDate>{car.year} model</CarDate>
                   <CarDescription>
                     {car.transmission} Transmission
-                    <br /> {car.price} <br /> {car.commission * 100}% commission
+                    <br /> {car.price} <br /> 
                     <br /> {car.comment}
                   </CarDescription>
                   <ActionButton onClick={() => setActive(true)}>
@@ -46,30 +61,18 @@ function Car(props) {
                     car={car}
                   >
                     <Carousel activeIndex={index} onSelect={handleSelect}>
+                    {car.files.map((file, index) =>
                       <Carousel.Item>
                         <img
                           className="d-block w-100"
-                          src="https://cdn.pixabay.com/photo/2021/10/29/12/25/toyota-gr-yaris-6751755_960_720.jpg"
+                          src={`http://localhost:5000/${file.filePath}`}
                           alt="First slide"
                         />
                       </Carousel.Item>
-                      <Carousel.Item>
-                        <img
-                          className="d-block w-100"
-                          src="https://cdn.pixabay.com/photo/2014/05/18/19/13/toyota-347288_960_720.jpg"
-                          alt="Second slide"
-                        />
-                      </Carousel.Item>
-                      <Carousel.Item>
-                        <img
-                          className="d-block w-100"
-                          src="https://cdn.pixabay.com/photo/2019/06/29/09/51/suzuki-sx4-4305877_960_720.jpg"
-                          alt="Third slide"
-                        />
-                      </Carousel.Item>
+                    )}
                     </Carousel>
                     <CarDescription>
-                      Contact Number: {car.number}
+                      Contact Number: {car.carId}
                     </CarDescription>
                   </Modal>
                 </CarContainer>
