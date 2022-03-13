@@ -6,20 +6,7 @@ import Car from "../components/Car";
 import { cars } from "../refs/cars";
 // import axios from "../axios";
 
-const Container = styled.div`
-  background: url("../images/car-background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  /* height: 100vh; */
-`;
-
-const SomeCont = styled.div`
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  justify-content: center;
-`;
+const Container = styled.div``;
 
 export default function CarPage() {
   // const [carInfo, setCarInfo] = useState([]);
@@ -33,9 +20,7 @@ export default function CarPage() {
     <>
       <Container>
         <Nav />
-        <SomeCont>
-          <Search type="text" placeholder="Search by Make, Model or Keyword" />
-        </SomeCont>
+        <Search type="text" placeholder="Search by Make, Model or Keyword" />
         <Car cars={cars} />
       </Container>
     </>
