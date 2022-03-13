@@ -4,11 +4,10 @@ export const CarsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
   justify-content: center;
-  grid-gap: var(--spacing-regular);
+  grid-gap: var(--spacing-medium) var(--spacing-regular);
 `;
 
 export const CarContainer = styled.div`
-  width: 400px;
   display: flex;
   flex-direction: column;
 
@@ -81,16 +80,23 @@ export const CarImage = styled.img`
   filter: grayscale();
 `;
 
-export const ActionButton = styled.button`
-  margin: 0 5px;
-  padding: 8px 14px;
-  background-color: rgba(155, 155, 155, 0.2);
-  color: #fff;
+export const CarFooter = styled.div`
+  margin-top: var(--spacing-regular);
+
+  display: flex;
+  align-items: center;
+`;
+
+export const ActionButton = styled.a`
+  flex-grow: 1;
+  margin-right: var(--spacing-base);
+
+  padding: var(--spacing-base);
+  font-size: var(--text-base);
+
   cursor: pointer;
-  border: 1px solid white;
-  outline: 0;
-  font-weight: 300;
-  &:hover {
-    opacity: 0.8;
-  }
+  border: 1px solid black;
+  text-decoration: none;
+
+  color: var(--clr-grey-600);
 `;

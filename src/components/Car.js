@@ -1,6 +1,9 @@
 // import { Button } from 'bootstrap';
 import React, { useState } from "react";
 
+import { ReactComponent as PriceTag } from "../assets/price.svg";
+import { ReactComponent as Gear } from "../assets/gear.svg";
+
 import Modal from "./Modal";
 import {
   CarsWrapper,
@@ -10,6 +13,7 @@ import {
   CarImage,
   CarDate,
   CarDescription,
+  CarFooter,
   ActionButton,
 } from "../styles/Car.style";
 
@@ -45,17 +49,20 @@ function Car(props) {
                   <CarDescription>
                     <p>{comment}</p>
                     <p>
-                      <i class="fa-solid fa-tag"></i>
+                      <PriceTag />
                       {price} br.
                     </p>
                     <p>
-                      <i class="fa-solid fa-gears"></i>
+                      <Gear />
                       {transmission}
                     </p>
                   </CarDescription>
-                  <ActionButton onClick={() => setActive(index)}>
-                    <i class="fa fa-user icon"></i> {number}
-                  </ActionButton>
+                  <CarFooter>
+                    <ActionButton href={"tel:+251" + number.slice(1)}>
+                      <i class="fa fa-user icon"></i> {number}
+                    </ActionButton>
+                    <p>{commission * 100}% commission</p>
+                  </CarFooter>
                 </CarDetails>
                 {/* <Modal
                   active={index === active}

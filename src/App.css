@@ -37,7 +37,8 @@
 }
 
 main {
-  padding: 0 2rem 4rem;
+  padding: var(--spacing-regular);
+  padding-bottom: var(--spacing-xlarge);
 
   background: var(--bg-main);
 }
