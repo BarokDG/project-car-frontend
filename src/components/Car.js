@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 import { ReactComponent as PriceTag } from "../assets/price.svg";
 import { ReactComponent as Gear } from "../assets/gear.svg";
+import { ReactComponent as Phone } from "../assets/phone.svg";
 
 import Modal from "./Modal";
 import {
@@ -43,14 +44,14 @@ function Car(props) {
                 <CarImage src={image} />
                 <CarDetails>
                   <CarTitle>
-                    {make} {model}
+                    {make} {model.toLowerCase()}
                   </CarTitle>
                   <CarDate>{year}</CarDate>
                   <CarDescription>
                     <p>{comment}</p>
                     <p>
                       <PriceTag />
-                      {price} br.
+                      {price.split(".")[0]} br.
                     </p>
                     <p>
                       <Gear />
@@ -59,9 +60,12 @@ function Car(props) {
                   </CarDescription>
                   <CarFooter>
                     <ActionButton href={"tel:+251" + number.slice(1)}>
-                      <i class="fa fa-user icon"></i> {number}
+                      <Phone />
+                      Click to call
                     </ActionButton>
-                    <p>{commission * 100}% commission</p>
+                    <p>
+                      {commission * 100}% <br /> commission
+                    </p>
                   </CarFooter>
                 </CarDetails>
                 {/* <Modal

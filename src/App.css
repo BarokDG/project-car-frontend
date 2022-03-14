@@ -11,7 +11,6 @@
   --spacing-xlarge: 60px;
 
   /* colors */
-  --bg-main: #d8dee9;
   --clr-grey-100: #dadada;
   --clr-grey-200: #a9a9a9;
   --clr-grey-300: #707070;
@@ -19,14 +18,22 @@
   --clr-grey-500: #6b6b6b;
   --clr-grey-600: #585858;
 
+  --clr-primary-100: #e8e8fa;
+  --clr-primary-200: #a5a9f3;
+  --clr-primary-300: #787eed;
+  --clr-primary-400: #4950da;
+  --clr-primary-500: #2b2b97;
+  --clr-primary-600: #232667;
+  --clr-primary-700: #1a1a2e;
+
   /* typography */
   font-family: "Poppins", sans-serif;
-  --text-xsmall: 14px;
-  --text-small: 16px;
-  --text-base: 20px;
-  --text-regular: 24px;
-  --text-medium: 32px;
-  --text-large: 40px;
+  --text-xsmall: 12px;
+  --text-small: 14px;
+  --text-base: 16px;
+  --text-regular: 20px;
+  --text-medium: 24px;
+  --text-large: 32px;
 }
 
 *,
@@ -40,5 +47,5 @@ main {
   padding: var(--spacing-regular);
   padding-bottom: var(--spacing-xlarge);
 
-  background: var(--bg-main);
+  background: var(--clr-primary-100);
 }

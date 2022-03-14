@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = styled.div`
+  padding: var(--spacing-regular) var(--spacing-medium);
   background-color: transparent;
   display: flex;
   justify-content: space-between;

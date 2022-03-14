@@ -20,7 +20,17 @@ export default function CarPage() {
     <>
       <Container>
         <Nav />
-        <Search type="text" placeholder="Search by Make, Model or Keyword" />
+        <h1
+          style={{
+            fontSize: "var(--text-medium)",
+            textAlign: "center",
+            fontWeight: 400,
+            color: "var(--clr-primary-600)",
+          }}
+        >
+          Search by Make, Model or Keyword
+        </h1>
+        <Search type="text" placeholder="Type here..." />
         <Car cars={cars} />
       </Container>
     </>

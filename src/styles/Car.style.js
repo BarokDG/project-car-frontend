@@ -2,101 +2,106 @@ import styled from "styled-components";
 
 export const CarsWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
-  justify-content: center;
   grid-gap: var(--spacing-medium) var(--spacing-regular);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 320px));
+  justify-content: center;
 `;
 
 export const CarContainer = styled.div`
+  background: white;
   display: flex;
   flex-direction: column;
-
-  background: white;
   padding: var(--spacing-small);
 `;
 
 export const CarDetails = styled.div`
-  padding: var(--spacing-regular);
-  padding-bottom: var(--spacing-medium);
-
   display: flex;
   flex-direction: column;
+  padding: var(--spacing-regular);
 `;
 
 export const CarTitle = styled.h2`
+  color: var(--clr-primary-600);
   font-size: var(--text-regular);
   font-weight: 600;
-  color: var(--clr-grey-500);
-
   line-height: 1;
   text-transform: capitalize;
 `;
 
-export const CarDate = styled.div`
-  margin-top: var(--spacing-small);
-  margin-left: -1px;
-  padding: var(--spacing-small) var(--spacing-regular);
-  font-weight: 700;
-  line-height: 1;
-
+export const CarDate = styled.span`
   align-self: start;
+  background: var(--clr-primary-100);
 
-  background: var(--clr-grey-100);
-  color: var(--clr-grey-600);
   border-radius: var(--spacing-regular);
-
-  margin-bottom: var(--spacing-medium);
+  color: var(--clr-primary-600);
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: var(--spacing-regular);
+  margin-left: -1px;
+  margin-top: var(--spacing-small);
+  padding: var(--spacing-small) var(--spacing-regular);
 `;
 
 export const CarDescription = styled.div`
   & p {
+    align-items: center;
     color: var(--clr-grey-300);
+    display: flex;
     font-size: var(--text-base);
     margin-bottom: var(--spacing-small);
 
-    display: flex;
-    align-items: center;
-
     & svg {
       margin-right: var(--spacing-base);
+      fill: var(--clr-primary-200);
     }
 
     &:first-child {
-      margin-bottom: var(--spacing-medium);
       font-size: var(--text-small);
+      margin-bottom: var(--spacing-regular);
     }
 
     &:nth-child(2) {
+      color: var(--clr-primary-600);
       font-weight: 600;
     }
   }
 `;
 
 export const CarImage = styled.img`
-  height: 250px;
+  height: 200px;
   object-fit: cover;
-
-  border-radius: 3px;
-  filter: grayscale();
 `;
 
 export const CarFooter = styled.div`
+  align-items: center;
+  display: flex;
   margin-top: var(--spacing-regular);
 
-  display: flex;
-  align-items: center;
+  & p {
+    text-align: center;
+    font-size: var(--text-small);
+  }
 `;
 
 export const ActionButton = styled.a`
   flex-grow: 1;
   margin-right: var(--spacing-base);
 
-  padding: var(--spacing-base);
   font-size: var(--text-base);
 
   cursor: pointer;
-  border: 1px solid black;
   text-decoration: none;
 
-  color: var(--clr-grey-600);
+  background: var(--clr-primary-400);
+  color: var(--clr-primary-100);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & svg {
+    width: 20px;
+
+    margin-right: var(--spacing-small);
+  }
 `;
