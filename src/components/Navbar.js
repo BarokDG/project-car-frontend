@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Nav = styled.div`
-  padding: var(--spacing-regular) var(--spacing-medium);
-  background-color: transparent;
+  padding: 0 var(--spacing-medium);
+  padding-right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    padding: var(--spacing-regular) var(--spacing-base);
+  }
 `;
 
 const Hamburger = styled.div`
@@ -53,16 +57,14 @@ const Menu = styled.div`
 const MenuLink = styled.a`
   padding: 1rem 2rem;
   cursor: pointer;
-  color: #7b7fda;
+  color: var(--clr-grey-300);
   font-weight: 500;
   font-size: 1rem;
   text-align: center;
   text-decoration: none;
+
   &:hover {
-    color: white;
-  }
-  &:last-child {
-    padding-right: 0;
+    color: var(--clr-primary-400);
   }
 `;
 

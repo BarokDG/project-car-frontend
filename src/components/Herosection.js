@@ -1,10 +1,12 @@
-import { Hero, Search } from "../styles/Herosection.style";
+import { Hero, SearchWrapper } from "../styles/Herosection.style";
 
 function Herosection() {
   return (
     <>
       <Hero>
-        <Search type="text" placeholder="Search by Make, Model or Keyword" />
+        <SearchWrapper>
+          <input type="text" placeholder="Search by Make, Model or Keyword" />
+        </SearchWrapper>
       </Hero>
     </>
   );

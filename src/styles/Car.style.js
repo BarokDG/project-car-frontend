@@ -17,7 +17,7 @@ export const CarContainer = styled.div`
 export const CarDetails = styled.div`
   display: flex;
   flex-direction: column;
-  padding: var(--spacing-regular);
+  padding: var(--spacing-regular) var(--spacing-base);
 `;
 
 export const CarTitle = styled.h2`
@@ -63,6 +63,22 @@ export const CarDescription = styled.div`
     &:nth-child(2) {
       color: var(--clr-primary-600);
       font-weight: 600;
+    }
+
+    & span {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      font-weight: 500;
+      font-size: var(--text-xsmall);
+      color: var(--clr-primary-400);
+
+      & svg {
+        fill: var(--clr-primary-400);
+        width: var(--spacing-regular);
+        margin-right: 0;
+        padding-top: var(--spacing-xsmall);
+      }
     }
   }
 `;

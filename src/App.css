@@ -19,8 +19,8 @@
   --clr-grey-600: #585858;
 
   --clr-primary-100: #e8e8fa;
-  --clr-primary-200: #a5a9f3;
-  --clr-primary-300: #787eed;
+  --clr-primary-200: hsl(237, 86%, 89%);
+  --clr-primary-300: #a5a9f3;
   --clr-primary-400: #4950da;
   --clr-primary-500: #2b2b97;
   --clr-primary-600: #232667;
@@ -48,4 +48,10 @@ main {
   padding-bottom: var(--spacing-xlarge);
 
   background: var(--clr-primary-100);
+}
+
+@media (max-width: 500px) {
+  main {
+    padding: var(--spacing-base);
+  }
 }

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Search } from "../styles/Herosection.style";
+import {
+  SearchWrapper,
+  SearchActionWrapper,
+} from "../styles/Herosection.style";
 import Nav from "../components/Navbar";
 import Car from "../components/Car";
 import { cars } from "../refs/cars";
@@ -20,17 +23,13 @@ export default function CarPage() {
     <>
       <Container>
         <Nav />
-        <h1
-          style={{
-            fontSize: "var(--text-medium)",
-            textAlign: "center",
-            fontWeight: 400,
-            color: "var(--clr-primary-600)",
-          }}
-        >
-          Search by Make, Model or Keyword
-        </h1>
-        <Search type="text" placeholder="Type here..." />
+        <SearchWrapper>
+          <h1>Find cars by Make, Model or Keyword</h1>
+          <SearchActionWrapper>
+            <input type="text" placeholder="Enter keywords..." />
+            <button>Search</button>
+          </SearchActionWrapper>
+        </SearchWrapper>
         <Car cars={cars} />
       </Container>
     </>

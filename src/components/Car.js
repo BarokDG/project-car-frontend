@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { ReactComponent as PriceTag } from "../assets/price.svg";
 import { ReactComponent as Gear } from "../assets/gear.svg";
 import { ReactComponent as Phone } from "../assets/phone.svg";
+import { ReactComponent as Check } from "../assets/check.svg";
 
 import Modal from "./Modal";
 import {
@@ -35,6 +36,7 @@ function Car(props) {
             year,
             number,
             commission,
+            loan,
           },
           index
         ) => {
@@ -52,6 +54,14 @@ function Car(props) {
                     <p>
                       <PriceTag />
                       {price.split(".")[0]} br.
+                      {loan ? (
+                        <span>
+                          <Check />
+                          Loan available
+                        </span>
+                      ) : (
+                        ""
+                      )}
                     </p>
                     <p>
                       <Gear />
