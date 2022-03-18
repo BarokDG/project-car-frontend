@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { ReactComponent as Phone } from "../assets/phone.svg";
 
@@ -18,6 +18,11 @@ import {
 
 function Car(props) {
   const [active, setActive] = useState(false);
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => setWindowSize(window.innerWidth));
+  });
 
   return (
     <CarsWrapper>
@@ -55,9 +60,7 @@ function Car(props) {
                       </div>
                       <div>
                         <label>Loan</label>
-                        <p>
-                          {loan ? `${loan} br.` : <span>Not available!</span>}
-                        </p>
+                        <p>{loan ? `${loan} br.` : "Not available!"}</p>
                       </div>
                       <div>
                         <label>Transmission</label>
@@ -66,9 +69,20 @@ function Car(props) {
                     </CarDescriptionGroup>
                   </CarDescription>
                   <CarFooter>
-                    <ActionButton href={"tel:+251" + number.slice(1)}>
+                    <ActionButton
+                      href={
+                        windowSize < 600 ? "tel: +251 " + number.slice(1) : "#"
+                      }
+                      style={
+                        windowSize < 600
+                          ? { pointerEvents: "all" }
+                          : { pointerEvents: "none" }
+                      }
+                    >
                       <Phone />
-                      Click to call
+                      {windowSize < 600
+                        ? "Click to call"
+                        : "+251 " + number.slice(1)}
                     </ActionButton>
                     <p>
                       {commission * 100}% <br /> commission

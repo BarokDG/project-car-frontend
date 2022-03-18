@@ -44,7 +44,7 @@ export const CarDate = styled.span`
 
 export const CarDescription = styled.div`
   label {
-    font-size: var(--text-small);
+    font-size: var(--text-xsmall);
     color: var(--clr-grey-200);
   }
 
@@ -52,11 +52,12 @@ export const CarDescription = styled.div`
     line-height: 1;
     color: var(--clr-grey-300);
     margin-bottom: var(--spacing-small);
+    font-size: var(--text-base);
   }
 `;
 
 export const CarDescriptionGroup = styled.div`
-  margin-top: var(--spacing-regular);
+  margin-top: var(--spacing-base);
 
   display: flex;
   flex-wrap: wrap;
@@ -66,18 +67,11 @@ export const CarDescriptionGroup = styled.div`
   div {
     flex-grow: 1;
     flex-basis: 50%;
-
-    p {
-      font-size: var(--text-regular);
-    }
-
-    span {
-      font-size: var(--text-base);
-    }
   }
 
   div:first-of-type p {
     color: var(--clr-primary-600);
+    // font-size: var(--text-regular);
     font-weight: 600;
   }
 `;
