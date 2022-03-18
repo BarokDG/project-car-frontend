@@ -43,43 +43,42 @@ export const CarDate = styled.span`
 `;
 
 export const CarDescription = styled.div`
-  & p {
-    align-items: center;
+  label {
+    font-size: var(--text-small);
+    color: var(--clr-grey-200);
+  }
+
+  p {
+    line-height: 1;
     color: var(--clr-grey-300);
-    display: flex;
-    font-size: var(--text-base);
     margin-bottom: var(--spacing-small);
+  }
+`;
 
-    & svg {
-      margin-right: var(--spacing-base);
-      fill: var(--clr-primary-200);
+export const CarDescriptionGroup = styled.div`
+  margin-top: var(--spacing-regular);
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  div {
+    flex-grow: 1;
+    flex-basis: 50%;
+
+    p {
+      font-size: var(--text-regular);
     }
 
-    &:first-child {
-      font-size: var(--text-small);
-      margin-bottom: var(--spacing-regular);
+    span {
+      font-size: var(--text-base);
     }
+  }
 
-    &:nth-child(2) {
-      color: var(--clr-primary-600);
-      font-weight: 600;
-    }
-
-    & span {
-      display: flex;
-      align-items: center;
-      margin-left: auto;
-      font-weight: 500;
-      font-size: var(--text-xsmall);
-      color: var(--clr-primary-400);
-
-      & svg {
-        fill: var(--clr-primary-400);
-        width: var(--spacing-regular);
-        margin-right: 0;
-        padding-top: var(--spacing-xsmall);
-      }
-    }
+  div:first-of-type p {
+    color: var(--clr-primary-600);
+    font-weight: 600;
   }
 `;
 

@@ -1,10 +1,6 @@
-// import { Button } from 'bootstrap';
 import React, { useState } from "react";
 
-import { ReactComponent as PriceTag } from "../assets/price.svg";
-import { ReactComponent as Gear } from "../assets/gear.svg";
 import { ReactComponent as Phone } from "../assets/phone.svg";
-import { ReactComponent as Check } from "../assets/check.svg";
 
 import Modal from "./Modal";
 import {
@@ -15,6 +11,7 @@ import {
   CarImage,
   CarDate,
   CarDescription,
+  CarDescriptionGroup,
   CarFooter,
   ActionButton,
 } from "../styles/Car.style";
@@ -51,22 +48,22 @@ function Car(props) {
                   <CarDate>{year}</CarDate>
                   <CarDescription>
                     <p>{comment}</p>
-                    <p>
-                      <PriceTag />
-                      {price.split(".")[0]} br.
-                      {loan ? (
-                        <span>
-                          <Check />
-                          Loan available
-                        </span>
-                      ) : (
-                        ""
-                      )}
-                    </p>
-                    <p>
-                      <Gear />
-                      {transmission}
-                    </p>
+                    <CarDescriptionGroup>
+                      <div>
+                        <label>Price</label>
+                        <p>{price.split(".")[0]} br.</p>
+                      </div>
+                      <div>
+                        <label>Loan</label>
+                        <p>
+                          {loan ? `${loan} br.` : <span>Not available!</span>}
+                        </p>
+                      </div>
+                      <div>
+                        <label>Transmission</label>
+                        <p>{transmission}</p>
+                      </div>
+                    </CarDescriptionGroup>
                   </CarDescription>
                   <CarFooter>
                     <ActionButton href={"tel:+251" + number.slice(1)}>

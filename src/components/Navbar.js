@@ -57,7 +57,7 @@ const Menu = styled.div`
 const MenuLink = styled.a`
   padding: 1rem 2rem;
   cursor: pointer;
-  color: var(--clr-grey-300);
+  color: var(--clr-primary-400);
   font-weight: 500;
   font-size: 1rem;
   text-align: center;
