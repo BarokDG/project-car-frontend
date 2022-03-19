@@ -1,31 +1,76 @@
-import React, { Fragment } from "react";
 import {
-  ModalBlock,
   ModalContainer,
-  ModalHeader,
-  ModalClose,
-  ModalTitle,
-  ModalBody,
-  ModalFooter,
+  SlideShowContainer,
+  SlideShowItem,
 } from "../styles/Modal.style";
 
-export default function Modal(props) {
-  console.log(props.car);
+import { useEffect } from "react";
+
+export default function Modal({ closeModal }) {
+  let slideIndex = 1;
+
+  useEffect(() => {
+    showSlides(slideIndex);
+  });
+
+  function plusSlides(n) {
+    showSlides((slideIndex += n));
+  }
+
+  function showSlides(n) {
+    let slides = document.getElementsByClassName("slide");
+
+    if (n > slides.length) {
+      slideIndex = 1;
+    }
+
+    if (n < 1) {
+      slideIndex = slides.length;
+    }
+
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+  }
+
   return (
     <>
-      {props.active && (
-        <ModalBlock>
-          {/* <ModalOverlay onClick={() => hideModal()}></ModalOverlay> */}
-          <ModalContainer>
-            <ModalHeader>
-              <ModalTitle>The {props.car.make} {props.car.model}</ModalTitle>
-              <ModalClose onClick={() => props.hideModal()}>X</ModalClose>
-            </ModalHeader>
-            <ModalBody>{props.children}</ModalBody>
-            <ModalFooter>{props.footer}</ModalFooter>
-          </ModalContainer>
-        </ModalBlock>
-      )}
+      <ModalContainer>
+        <SlideShowContainer
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              closeModal();
+            }
+          }}
+        >
+          <SlideShowItem className="slide">
+            <img
+              src="https://cdn.pixabay.com/photo/2021/10/29/12/25/toyota-gr-yaris-6751755_960_720.jpg"
+              alt=""
+            />
+          </SlideShowItem>
+          <SlideShowItem className="slide">
+            <img
+              src="https://cdn.pixabay.com/photo/2014/05/18/19/13/toyota-347288_960_720.jpg"
+              alt=""
+            />
+          </SlideShowItem>
+          <SlideShowItem className="slide">
+            <img
+              src="https://cdn.pixabay.com/photo/2019/06/29/09/51/suzuki-sx4-4305877_960_720.jpg"
+              alt=""
+            />
+          </SlideShowItem>
+        </SlideShowContainer>
+        <button className="prev" onClick={() => plusSlides(-1)}>
+          &#10094;
+        </button>
+        <button className="next" onClick={() => plusSlides(1)}>
+          &#10095;
+        </button>
+      </ModalContainer>
     </>
   );
 }

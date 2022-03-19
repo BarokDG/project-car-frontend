@@ -76,9 +76,20 @@ export const CarDescriptionGroup = styled.div`
   }
 `;
 
+export const CarImageContainer = styled.div`
+  position: relative;
+
+  button {
+    position: absolute;
+    right: var(--spacing-small);
+    bottom: var(--spacing-base);
+  }
+`;
+
 export const CarImage = styled.img`
   height: 200px;
   object-fit: cover;
+  width: 100%;
 `;
 
 export const CarFooter = styled.div`

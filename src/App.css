@@ -48,6 +48,7 @@
   padding-bottom: var(--spacing-xlarge);
 
   background: var(--clr-primary-100);
+  overflow: hidden;
 }
 
 @media (max-width: 500px) {

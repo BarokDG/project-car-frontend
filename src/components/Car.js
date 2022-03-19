@@ -8,6 +8,7 @@ import {
   CarDetails,
   CarTitle,
   CarContainer,
+  CarImageContainer,
   CarImage,
   CarDate,
   CarDescription,
@@ -17,35 +18,43 @@ import {
 } from "../styles/Car.style";
 
 function Car(props) {
-  const [active, setActive] = useState(false);
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("resize", () => setWindowSize(window.innerWidth));
-  });
+    const body = document.querySelector("body");
+
+    showModal
+      ? (body.style.overflow = "hidden")
+      : (body.style.overflow = "auto");
+  }, [showModal]);
 
   return (
-    <CarsWrapper>
-      {props.cars.map(
-        (
-          {
-            image,
-            make,
-            model,
-            comment,
-            transmission,
-            price,
-            year,
-            number,
-            commission,
-            loan,
-          },
-          index
-        ) => {
-          return (
-            <>
-              <CarContainer>
-                <CarImage src={image} />
+    <>
+      <CarsWrapper>
+        {props.cars.map(
+          (
+            {
+              image,
+              make,
+              model,
+              comment,
+              transmission,
+              price,
+              year,
+              number,
+              commission,
+              loan,
+            },
+            index
+          ) => {
+            return (
+              <CarContainer key={index}>
+                <CarImageContainer>
+                  <CarImage src={image} />
+                  <button onClick={() => setShowModal(true)}>
+                    More Images
+                  </button>
+                </CarImageContainer>
                 <CarDetails>
                   <CarTitle>
                     {make} {model.toLowerCase()}
@@ -71,16 +80,18 @@ function Car(props) {
                   <CarFooter>
                     <ActionButton
                       href={
-                        windowSize < 600 ? "tel: +251 " + number.slice(1) : "#"
+                        window.innerWidth < 600
+                          ? "tel: +251 " + number.slice(1)
+                          : "#"
                       }
                       style={
-                        windowSize < 600
+                        window.innerWidth < 600
                           ? { pointerEvents: "all" }
                           : { pointerEvents: "none" }
                       }
                     >
                       <Phone />
-                      {windowSize < 600
+                      {window.innerWidth < 600
                         ? "Click to call"
                         : "+251 " + number.slice(1)}
                     </ActionButton>
@@ -89,41 +100,13 @@ function Car(props) {
                     </p>
                   </CarFooter>
                 </CarDetails>
-                {/* <Modal
-                  active={index === active}
-                  hideModal={() => setActive(null)}
-                  title="Modal Title"
-                >
-                  <Carousel>
-                    <Carousel.Item>
-                      <img
-                        className="d-block w-100"
-                        src="https://cdn.pixabay.com/photo/2021/10/29/12/25/toyota-gr-yaris-6751755_960_720.jpg"
-                        alt="First slide"
-                      />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                      <img
-                        className="d-block w-100"
-                        src="https://cdn.pixabay.com/photo/2014/05/18/19/13/toyota-347288_960_720.jpg"
-                        alt="Second slide"
-                      />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                      <img
-                        className="d-block w-100"
-                        src="https://cdn.pixabay.com/photo/2019/06/29/09/51/suzuki-sx4-4305877_960_720.jpg"
-                        alt="Third slide"
-                      />
-                    </Carousel.Item>
-                  </Carousel>
-                </Modal> */}
               </CarContainer>
-            </>
-          );
-        }
-      )}
-    </CarsWrapper>
+            );
+          }
+        )}
+      </CarsWrapper>
+      {showModal && <Modal closeModal={() => setShowModal(false)} />}
+    </>
   );
 }
 
