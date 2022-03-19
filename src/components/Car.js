@@ -53,7 +53,8 @@ function Car(props) {
                 <CarImageContainer>
                   <CarImage src={image} />
                   <button onClick={() => setShowModal(true)}>
-                    <Image /> More pictures
+                    <Image />
+                    <span>More pictures</span>
                   </button>
                 </CarImageContainer>
                 <CarDetails>

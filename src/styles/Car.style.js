@@ -86,15 +86,20 @@ export const CarImageContainer = styled.div`
     border: none;
     padding: var(--spacing-small);
 
-    color: var(--clr-grey-700);
+    background: var(--clr-grey-600);
 
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+
+    & span {
+      color: var(--clr-grey-100);
+      line-height: 1;
+    }
 
     & svg {
       width: var(--text-xsmall);
       margin-right: var(--spacing-xsmall);
-      fill: var(--clr-grey-400);
+      fill: var(--clr-grey-200);
     }
   }
 `;
