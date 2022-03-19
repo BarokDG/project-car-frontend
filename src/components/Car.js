@@ -4,6 +4,7 @@ import { ReactComponent as Phone } from "../assets/phone.svg";
 import { ReactComponent as Image } from "../assets/image.svg";
 
 import Modal from "./Modal";
+import {getMultipleFiles} from '../data/api';
 import {
   CarsWrapper,
   CarDetails,
@@ -20,7 +21,22 @@ import {
 
 function Car(props) {
   const [showModal, setShowModal] = useState(false);
+  const [multipleFiles, setMultipleFiles] = useState([]);
 
+  const getMultipleFilesList = async () => {
+    try {
+        const fileslist = await getMultipleFiles();
+        setMultipleFiles(fileslist);
+        console.log(multipleFiles);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+  useEffect(() => {
+    getMultipleFilesList();
+  }, []);
+  
   useEffect(() => {
     const body = document.querySelector("body");
 
@@ -32,7 +48,7 @@ function Car(props) {
   return (
     <>
       <CarsWrapper>
-        {props.cars.map(
+        {multipleFiles.map(
           (
             {
               image,
@@ -107,7 +123,7 @@ function Car(props) {
           }
         )}
       </CarsWrapper>
-      {showModal && <Modal closeModal={() => setShowModal(false)} />}
+      {showModal && <Modal {...file} closeModal={() => setShowModal(false)} />}
     </>
   );
 }
