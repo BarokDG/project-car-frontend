@@ -1,25 +1,15 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { Search } from "../styles/Herosection.style";
+import {
+  SearchWrapper,
+  SearchActionWrapper,
+} from "../styles/Herosection.style";
 import Nav from "../components/Navbar";
 import Car from "../components/Car";
 import { cars } from "../refs/cars";
 // import axios from "../axios";
 
-const Container = styled.div`
-  background: url("../images/car-background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  /* height: 100vh; */
-`;
-
-const SomeCont = styled.div`
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  justify-content: center;
-`;
+const Container = styled.div``;
 
 export default function CarPage() {
   // const [carInfo, setCarInfo] = useState([]);
@@ -33,9 +23,13 @@ export default function CarPage() {
     <>
       <Container>
         <Nav />
-        <SomeCont>
-          <Search type="text" placeholder="Search by Make, Model or Keyword" />
-        </SomeCont>
+        <SearchWrapper>
+          <h1>Find cars by Make, Model or Keyword</h1>
+          <SearchActionWrapper>
+            <input type="text" placeholder="Enter keywords..." />
+            <button>Search</button>
+          </SearchActionWrapper>
+        </SearchWrapper>
         <Car cars={cars} />
       </Container>
     </>

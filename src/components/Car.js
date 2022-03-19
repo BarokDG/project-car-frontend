@@ -1,25 +1,27 @@
-// import { Button } from 'bootstrap';
-import React, { useState, useEffect} from "react";
-import { Row, Col, Carousel } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+
+import { ReactComponent as Phone } from "../assets/phone.svg";
+import { ReactComponent as Image } from "../assets/image.svg";
+
 import Modal from "./Modal";
 import {getMultipleFiles} from '../data/api';
 import {
+  CarsWrapper,
+  CarDetails,
   CarTitle,
   CarContainer,
+  CarImageContainer,
   CarImage,
   CarDate,
   CarDescription,
+  CarDescriptionGroup,
+  CarFooter,
   ActionButton,
 } from "../styles/Car.style";
 
 function Car(props) {
-  const [active, setActive] = useState(false);
-  const [index, setIndex] = useState(0);
+  const [showModal, setShowModal] = useState(false);
   const [multipleFiles, setMultipleFiles] = useState([]);
-
-  const handleSelect = (selectedIndex, e) => {
-    setIndex(selectedIndex);
-  };
 
   const getMultipleFilesList = async () => {
     try {
@@ -30,57 +32,98 @@ function Car(props) {
       console.log(error);
     }
   }
+  
   useEffect(() => {
     getMultipleFilesList();
   }, []);
+  
+  useEffect(() => {
+    const body = document.querySelector("body");
+
+    showModal
+      ? (body.style.overflow = "hidden")
+      : (body.style.overflow = "auto");
+  }, [showModal]);
+
   return (
     <>
-      <Row md={3} xs={1} sm={2}>
-      {multipleFiles.map((car, index) => {
-          return (
-            <>
-              <Col>
-                <CarContainer>
-                  <CarImage src={`http://localhost:5000/${car.files[0].filePath}`} />
+      <CarsWrapper>
+        {multipleFiles.map(
+          (
+            {
+              image,
+              make,
+              model,
+              comment,
+              transmission,
+              price,
+              year,
+              number,
+              commission,
+              loan,
+            },
+            index
+          ) => {
+            return (
+              <CarContainer key={index}>
+                <CarImageContainer>
+                  <CarImage src={image} />
+                  <button onClick={() => setShowModal(true)}>
+                    <Image />
+                    <span>More pictures</span>
+                  </button>
+                </CarImageContainer>
+                <CarDetails>
                   <CarTitle>
-                    {car.make} 
+                    {make} {model.toLowerCase()}
                   </CarTitle>
-                  <CarDate>{car.year} model</CarDate>
+                  <CarDate>{year}</CarDate>
                   <CarDescription>
-                    {car.transmission} Transmission
-                    <br /> {car.price} <br /> 
-                    <br /> {car.comment}
+                    <p>{comment}</p>
+                    <CarDescriptionGroup>
+                      <div>
+                        <label>Price</label>
+                        <p>{price.split(".")[0]} br.</p>
+                      </div>
+                      <div>
+                        <label>Loan</label>
+                        <p>{loan ? `${loan} br.` : "Not available!"}</p>
+                      </div>
+                      <div>
+                        <label>Transmission</label>
+                        <p>{transmission}</p>
+                      </div>
+                    </CarDescriptionGroup>
                   </CarDescription>
-                  <ActionButton onClick={() => setActive(true)}>
-                    <i class="fa fa-user icon"></i> Contact Buyer
-                  </ActionButton>
-                  <Modal
-                    active={active}
-                    hideModal={() => setActive(false)}
-                    title="Modal Title"
-                    car={car}
-                  >
-                    <Carousel activeIndex={index} onSelect={handleSelect}>
-                    {car.files.map((file, index) =>
-                      <Carousel.Item>
-                        <img
-                          className="d-block w-100"
-                          src={`http://localhost:5000/${file.filePath}`}
-                          alt="First slide"
-                        />
-                      </Carousel.Item>
-                    )}
-                    </Carousel>
-                    <CarDescription>
-                      Contact Number: {car.carId}
-                    </CarDescription>
-                  </Modal>
-                </CarContainer>
-              </Col>
-            </>
-          );
-        })}
-      </Row>
+                  <CarFooter>
+                    <ActionButton
+                      href={
+                        window.innerWidth < 600
+                          ? "tel: +251 " + number.slice(1)
+                          : "#"
+                      }
+                      style={
+                        window.innerWidth < 600
+                          ? { pointerEvents: "all" }
+                          : { pointerEvents: "none" }
+                      }
+                    >
+                      <Phone />
+                      {window.innerWidth < 600
+                        ? "Click to call"
+                        : "+251 " + number.slice(1)}
+                    </ActionButton>
+                    <p>
+                      {commission * 100}% <br /> commission
+                    </p>
+                  </CarFooter>
+                </CarDetails>
+              </CarContainer>
+            );
+          }
+        )}
+      </CarsWrapper>
+      {showModal && <Modal {...file} closeModal={() => setShowModal(false)} />}
     </>
   );
 }
