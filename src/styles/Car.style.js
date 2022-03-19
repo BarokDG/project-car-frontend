@@ -99,7 +99,7 @@ export const CarImageContainer = styled.div`
     & svg {
       width: var(--text-xsmall);
       margin-right: var(--spacing-xsmall);
-      fill: var(--clr-grey-200);
+      fill: var(--clr-grey-100);
     }
   }
 `;

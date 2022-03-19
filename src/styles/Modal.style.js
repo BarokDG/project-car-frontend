@@ -35,8 +35,8 @@ export const ModalContainer = styled.div`
 
     font-size: var(--text-regular);
 
-    background: var(--clr-primary-700);
-    color: var(--clr-primary-300);
+    background: var(--clr-primary-100);
+    color: var(--clr-primary-700);
   }
 
   .prev {
@@ -45,6 +45,23 @@ export const ModalContainer = styled.div`
 
   .next {
     right: var(--spacing-medium);
+  }
+
+  @media (max-width: 600px) {
+    & > button {
+      width: var(--spacing-large);
+      height: var(--spacing-large);
+      top: unset;
+      bottom: 10%;
+    }
+
+    .prev {
+      left: calc(50% - var(--spacing-xlarge));
+    }
+
+    .next {
+      right: calc(50% - var(--spacing-xlarge));
+    }
   }
 `;
 
@@ -61,8 +78,8 @@ export const SlideShowItem = styled.div`
 
   & img {
     display: block;
-    width: 700px;
-    height: 500px;
+    max-width: 100%;
+
     object-fit: cover;
   }
 `;
