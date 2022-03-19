@@ -83,6 +83,19 @@ export const CarImageContainer = styled.div`
     position: absolute;
     right: var(--spacing-small);
     bottom: var(--spacing-base);
+    border: none;
+    padding: var(--spacing-small);
+
+    color: var(--clr-grey-700);
+
+    display: flex;
+    align-items: center;
+
+    & svg {
+      width: var(--text-xsmall);
+      margin-right: var(--spacing-xsmall);
+      fill: var(--clr-grey-400);
+    }
   }
 `;
 

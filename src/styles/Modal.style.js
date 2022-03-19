@@ -23,7 +23,7 @@ export const ModalContainer = styled.div`
     opacity: 0.7;
   }
 
-  & > * + button {
+  & > button {
     position: absolute;
     border-radius: 50%;
     border: none;

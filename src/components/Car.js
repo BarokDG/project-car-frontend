@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { ReactComponent as Phone } from "../assets/phone.svg";
+import { ReactComponent as Image } from "../assets/image.svg";
 
 import Modal from "./Modal";
 import {
@@ -52,7 +53,7 @@ function Car(props) {
                 <CarImageContainer>
                   <CarImage src={image} />
                   <button onClick={() => setShowModal(true)}>
-                    More Images
+                    <Image /> More pictures
                   </button>
                 </CarImageContainer>
                 <CarDetails>
