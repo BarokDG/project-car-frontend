@@ -48,7 +48,7 @@ function Car(props) {
   return (
     <>
       <CarsWrapper>
-        {multipleFiles.map(
+        {props.cars.map(
           (
             {
               image,
@@ -123,7 +123,7 @@ function Car(props) {
           }
         )}
       </CarsWrapper>
-      {showModal && <Modal {...file} closeModal={() => setShowModal(false)} />}
+      {showModal && <Modal closeModal={() => setShowModal(false)} />}
     </>
   );
 }
