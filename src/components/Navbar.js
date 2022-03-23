@@ -82,7 +82,7 @@ export default function Navbar() {
       </Hamburger>
       <Menu isOpen={isOpen}>
         <MenuLink href="/cars">All Cars</MenuLink>
-        <MenuLink href="">Categories</MenuLink>
+        <MenuLink href="/info">Sell Car</MenuLink>
         <MenuLink href="/favs">Your Cars</MenuLink>
       </Menu>
     </Nav>
