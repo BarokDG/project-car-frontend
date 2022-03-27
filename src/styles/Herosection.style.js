@@ -8,7 +8,7 @@ export const SearchWrapper = styled.div`
   max-width: 800px;
   width: 75vw;
   min-width: 300px;
-  margin: var(--spacing-regular) auto;
+  margin: var(--spacing-regular) auto var(--spacing-base);
 
   & h1 {
     font-size: var(--text-medium);
@@ -73,7 +73,7 @@ export const SearchActionWrapper = styled.div`
   flex-wrap: wrap;
   gap: var(--spacing-small);
 
-  margin: var(--spacing-base) auto var(--spacing-xlarge);
+  margin: var(--spacing-base) auto 0;
 
   position: relative;
 

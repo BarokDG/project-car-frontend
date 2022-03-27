@@ -9,6 +9,11 @@ export const ModalContainer = styled.div`
   z-index: 10;
   overflow: hidden;
 
+  ${(props) =>
+    props.loader
+      ? "display: flex; justify-content: center; align-items: center;"
+      : ""}
+
   &::before {
     content: "";
     height: 100%;
@@ -20,7 +25,7 @@ export const ModalContainer = styled.div`
     left: 0;
 
     background: var(--clr-primary-700);
-    opacity: 0.7;
+    opacity: ${(props) => (props.loader ? 0.1 : 0.7)};
   }
 
   & > button {
