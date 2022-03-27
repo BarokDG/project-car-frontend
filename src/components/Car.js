@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import { ReactComponent as Phone } from "../assets/phone.svg";
-import { ReactComponent as Image } from "../assets/image.svg";
+import { ReactComponent as PhoneIcon } from "../assets/phone.svg";
+import { ReactComponent as ImageIcon } from "../assets/image.svg";
 
 import Modal from "./Modal";
-import {getMultipleFiles} from '../data/api';
+import { getMultipleFiles } from "../data/api";
 import {
   CarsWrapper,
   CarDetails,
@@ -19,24 +19,27 @@ import {
   ActionButton,
 } from "../styles/Car.style";
 
-function Car(props) {
+function Car() {
   const [showModal, setShowModal] = useState(false);
   const [multipleFiles, setMultipleFiles] = useState([]);
 
+  // Need this to pass images to the modal
+  const [modalImages, setModalImages] = useState();
+
   const getMultipleFilesList = async () => {
     try {
-        const fileslist = await getMultipleFiles();
-        setMultipleFiles(fileslist);
-        console.log(multipleFiles);
+      const fileslist = await getMultipleFiles();
+      setMultipleFiles(fileslist);
     } catch (error) {
       console.log(error);
     }
-  }
-  
+  };
+
   useEffect(() => {
     getMultipleFilesList();
   }, []);
-  
+
+  // Restrict scrolling when modal is open
   useEffect(() => {
     const body = document.querySelector("body");
 
@@ -51,25 +54,36 @@ function Car(props) {
         {multipleFiles.map(
           (
             {
-              image,
+              files: images,
               make,
               model,
               comment,
               transmission,
               price,
               year,
-              number,
+              contact,
               commission,
               loan,
             },
             index
           ) => {
+            console.log("re-rendered");
             return (
               <CarContainer key={index}>
                 <CarImageContainer>
-                  <CarImage src={image} />
-                  <button onClick={() => setShowModal(true)}>
-                    <Image />
+                  <CarImage
+                    src={
+                      "http://localhost:5000/" +
+                      images[0].filePath.replace("\\", "/")
+                    }
+                  />
+                  <button
+                    onClick={() => {
+                      setModalImages(images);
+                      setShowModal(true);
+                    }}
+                  >
+                    <ImageIcon />
                     <span>More pictures</span>
                   </button>
                 </CarImageContainer>
@@ -83,7 +97,7 @@ function Car(props) {
                     <CarDescriptionGroup>
                       <div>
                         <label>Price</label>
-                        <p>{price.split(".")[0]} br.</p>
+                        <p>{price} br.</p>
                       </div>
                       <div>
                         <label>Loan</label>
@@ -98,9 +112,7 @@ function Car(props) {
                   <CarFooter>
                     <ActionButton
                       href={
-                        window.innerWidth < 600
-                          ? "tel: +251 " + number.slice(1)
-                          : "#"
+                        window.innerWidth < 600 ? "tel: +251 " + contact : "#"
                       }
                       style={
                         window.innerWidth < 600
@@ -108,13 +120,13 @@ function Car(props) {
                           : { pointerEvents: "none" }
                       }
                     >
-                      <Phone />
+                      <PhoneIcon />
                       {window.innerWidth < 600
                         ? "Click to call"
-                        : "+251 " + number.slice(1)}
+                        : "+251 " + contact}
                     </ActionButton>
                     <p>
-                      {commission * 100}% <br /> commission
+                      {commission.split(" ")[0]} <br /> commission
                     </p>
                   </CarFooter>
                 </CarDetails>
@@ -123,7 +135,9 @@ function Car(props) {
           }
         )}
       </CarsWrapper>
-      {showModal && <Modal {...file} closeModal={() => setShowModal(false)} />}
+      {showModal && (
+        <Modal images={modalImages} closeModal={() => setShowModal(false)} />
+      )}
     </>
   );
 }

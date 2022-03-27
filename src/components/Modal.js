@@ -6,7 +6,7 @@ import {
 
 import { useEffect } from "react";
 
-export default function Modal({ closeModal }) {
+export default function Modal({ images, closeModal }) {
   let slideIndex = 1;
 
   useEffect(() => {
@@ -45,24 +45,18 @@ export default function Modal({ closeModal }) {
             }
           }}
         >
-          <SlideShowItem className="slide">
-            <img
-              src="https://cdn.pixabay.com/photo/2021/10/29/12/25/toyota-gr-yaris-6751755_960_720.jpg"
-              alt=""
-            />
-          </SlideShowItem>
-          <SlideShowItem className="slide">
-            <img
-              src="https://cdn.pixabay.com/photo/2014/05/18/19/13/toyota-347288_960_720.jpg"
-              alt=""
-            />
-          </SlideShowItem>
-          <SlideShowItem className="slide">
-            <img
-              src="https://cdn.pixabay.com/photo/2019/06/29/09/51/suzuki-sx4-4305877_960_720.jpg"
-              alt=""
-            />
-          </SlideShowItem>
+          {images.map((image) => {
+            return (
+              <SlideShowItem className="slide">
+                <img
+                  src={
+                    "http://localhost:5000/" + image.filePath.replace("\\", "/")
+                  }
+                  alt=""
+                />
+              </SlideShowItem>
+            );
+          })}
         </SlideShowContainer>
         <button className="prev" onClick={() => plusSlides(-1)}>
           &#10094;

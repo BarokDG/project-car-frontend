@@ -45,7 +45,7 @@ export const CarDate = styled.span`
 export const CarDescription = styled.div`
   label {
     font-size: var(--text-xsmall);
-    color: var(--clr-grey-200);
+    color: var(--clr-grey-300);
   }
 
   p {
