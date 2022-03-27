@@ -21,7 +21,7 @@ import {
 } from "../styles/Car.style";
 
 import { FilterBar, Select } from "../styles/Filter.style";
-import { Loader } from "../styles/Loader.style";
+import { Loader, LoaderContainer } from "../styles/Loader.style";
 import { ModalContainer } from "../styles/Modal.style";
 
 function Car() {
@@ -59,7 +59,7 @@ function Car() {
   return (
     <>
       <FilterBar>
-        <span style={{ marginRight: "var(--spacing-base)" }}>Filter by: </span>
+        <label>Filter by:</label>
         <Select defaultValue="" onChange={() => {}}>
           <option value="" disabled hidden>
             Year
@@ -70,9 +70,13 @@ function Car() {
       </FilterBar>
 
       <CarsWrapper>
+        <h1>Latest</h1>
         {!multipleFiles && (
           <ModalContainer loader>
-            <Loader />
+            <LoaderContainer>
+              <Loader />
+              Loading...
+            </LoaderContainer>
           </ModalContainer>
         )}
         {multipleFiles

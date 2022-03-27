@@ -1,7 +1,13 @@
 import styled from "styled-components";
 
+export const LoaderContainer = styled.div`
+  padding: var(--spacing-large) var(--spacing-xlarge);
+  background: var(--clr-primary-100);
+`;
+
 export const Loader = styled.div`
   position: relative;
+  margin: 0 auto var(--spacing-base);
   width: 8px;
   height: 48px;
   background: rgb(a203, 205, 251, 0.2);

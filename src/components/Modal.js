@@ -45,9 +45,9 @@ export default function Modal({ images, closeModal }) {
             }
           }}
         >
-          {images.map((image) => {
+          {images.map((image, index) => {
             return (
-              <SlideShowItem className="slide">
+              <SlideShowItem className="slide" key={index}>
                 <img
                   src={
                     "http://localhost:5000/" + image.filePath.replace("\\", "/")
