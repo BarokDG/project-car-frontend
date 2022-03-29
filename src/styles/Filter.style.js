@@ -26,11 +26,6 @@ export const Select = styled.select`
   padding: var(--spacing-small) var(--spacing-base);
   width: 100px;
   border-bottom: 2px solid var(--clr-primary-600);
-  background: var(--clr-grey-200);
+  background: var(--clr-grey-100);
   margin-right: var(--spacing-base);
-
-  option {
-    padding: var(--spacing-base);
-    border-radius: var(--spacing-medium);
-  }
 `;

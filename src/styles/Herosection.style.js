@@ -81,3 +81,5 @@ export const SearchActionWrapper = styled.div`
     margin-bottom: var(--spacing-medium);
   }
 `;
+
+export const Pagination = styled.div``;

@@ -59,8 +59,8 @@ export const CarDescription = styled.div`
     color: var(--clr-grey-500);
   }
 
-  p {
-    line-height: 1;
+  & > p {
+    line-height: 1.5;
     color: var(--clr-grey-500);
     margin-bottom: var(--spacing-small);
     font-size: var(--text-base);
