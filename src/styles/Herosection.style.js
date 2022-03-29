@@ -82,4 +82,23 @@ export const SearchActionWrapper = styled.div`
   }
 `;
 
-export const Pagination = styled.div``;
+export const Pagination = styled.div`
+  margin-top: var(--spacing-xlarge);
+
+  display: flex;
+  justify-content: center;
+
+  & button {
+    margin: 0 var(--spacing-small);
+    height: var(--spacing-large);
+    width: var(--spacing-large);
+    cursor: pointer;
+  }
+
+  & button.active-page {
+    background: var(--clr-primary-500);
+    border: none;
+    color: var(--clr-primary-100);
+    font-weight: 700;
+  }
+`;

@@ -29,9 +29,6 @@ export default function CarPage() {
   };
 
   useEffect(() => {
-    //To start loader
-    setCars();
-
     getCars(pageNumber);
   }, [pageNumber]);
 
@@ -70,7 +67,11 @@ export default function CarPage() {
               return (
                 <button
                   key={index}
+                  className={pageNumber === index + 1 ? "active-page" : ""}
                   onClick={() => {
+                    //To resume loader
+                    setCars();
+
                     setPageNumber(index + 1);
                   }}
                 >
