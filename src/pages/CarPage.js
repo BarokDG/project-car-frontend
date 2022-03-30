@@ -10,6 +10,7 @@ import { Loader, LoaderContainer } from "../styles/Loader.style";
 import { ModalContainer } from "../styles/Modal.style";
 
 import { getCarsAPI } from "../data/api";
+import EmptyState from "../components/EmptyState";
 
 export default function CarPage() {
   const [cars, setCars] = useState();
@@ -59,7 +60,8 @@ export default function CarPage() {
       </SearchWrapper>
       {cars && (
         <>
-          <Car cars={cars.data} />
+          {cars.data.length ? <Car cars={cars.data} /> : ""}
+          {!cars.data.length && <EmptyState />}
           <Pagination>
             {[
               ...new Array(Math.ceil(cars.amountOfCars / cars.itemsPerPage)),

@@ -27,9 +27,6 @@ function Car({ cars }) {
   // Need this to pass images to the modal
   const [modalImages, setModalImages] = useState();
 
-  // Filtering
-  const [filterRule, setFilterRule] = useState({});
-
   // Restrict scrolling when modal is open
   useEffect(() => {
     const body = document.querySelector("body");
@@ -56,99 +53,106 @@ function Car({ cars }) {
           <CarsWrapper>
             <h1>Latest</h1>
 
-            {cars
-              ?.filter(() => filterRule)
-              .map(
-                (
-                  {
-                    files: images,
-                    make,
-                    model,
-                    comment,
-                    transmission,
-                    price,
-                    year,
-                    contact,
-                    commission,
-                    loan,
-                  },
-                  index
-                ) => {
-                  return (
-                    <CarContainer key={index}>
-                      <CarImageContainer>
-                        <CarImage
-                          src={
-                            "http://localhost:5000/" +
-                            images[0].filePath.replace("\\", "/")
+            {cars.map(
+              (
+                {
+                  files: images,
+                  make,
+                  model,
+                  comment,
+                  transmission,
+                  price,
+                  year,
+                  contact,
+                  commission,
+                  loan,
+                },
+                index
+              ) => {
+                return (
+                  <CarContainer key={index}>
+                    <CarImageContainer>
+                      <CarImage
+                        src={
+                          "http://localhost:5000/" +
+                          images[0].filePath.replace("\\", "/")
+                        }
+                      />
+                      <button
+                        onClick={() => {
+                          setModalImages(images);
+                          setShowModal(true);
+                        }}
+                      >
+                        <ImageIcon />
+                        <span>More pictures</span>
+                      </button>
+                    </CarImageContainer>
+                    <CarDetails>
+                      <CarTitle>
+                        {make} {model.toLowerCase()}
+                      </CarTitle>
+                      <CarDate>{year}</CarDate>
+                      <CarDescription>
+                        <p>{comment}</p>
+                        <CarDescriptionGroup>
+                          <div>
+                            <label>Price</label>
+                            <p>
+                              {new Intl.NumberFormat("en-GB", {
+                                style: "currency",
+                                currency: "ETB",
+                                minimumFractionDigits: 0,
+                                maximumFractionDigits: 0,
+                              }).format(price)}
+                            </p>
+                          </div>
+                          <div>
+                            <label>Loan</label>
+                            <p>
+                              {loan
+                                ? `${new Intl.NumberFormat("en-GB", {
+                                    style: "currency",
+                                    currency: "ETB",
+                                    minimumFractionDigits: 0,
+                                    maximumFractionDigits: 0,
+                                  }).format(loan)} br.`
+                                : "Not available!"}
+                            </p>
+                          </div>
+                          <div>
+                            <label>Transmission</label>
+                            <p>{transmission}</p>
+                          </div>
+                        </CarDescriptionGroup>
+                      </CarDescription>
+                      <CarFooter>
+                        <ActionButton
+                          href={
+                            window.innerWidth < 600
+                              ? "tel: +251 " + contact
+                              : "#"
                           }
-                        />
-                        <button
-                          onClick={() => {
-                            setModalImages(images);
-                            setShowModal(true);
-                          }}
+                          style={
+                            window.innerWidth < 600
+                              ? { pointerEvents: "all" }
+                              : { pointerEvents: "none" }
+                          }
                         >
-                          <ImageIcon />
-                          <span>More pictures</span>
-                        </button>
-                      </CarImageContainer>
-                      <CarDetails>
-                        <CarTitle>
-                          {make} {model.toLowerCase()}
-                        </CarTitle>
-                        <CarDate>{year}</CarDate>
-                        <CarDescription>
-                          <p>{comment}</p>
-                          <CarDescriptionGroup>
-                            <div>
-                              <label>Price</label>
-                              <p>
-                                {new Intl.NumberFormat("en-GB", {
-                                  style: "currency",
-                                  currency: "ETB",
-                                  minimumFractionDigits: 0,
-                                  maximumFractionDigits: 0,
-                                }).format(price)}
-                              </p>
-                            </div>
-                            <div>
-                              <label>Loan</label>
-                              <p>{loan ? `${loan} br.` : "Not available!"}</p>
-                            </div>
-                            <div>
-                              <label>Transmission</label>
-                              <p>{transmission}</p>
-                            </div>
-                          </CarDescriptionGroup>
-                        </CarDescription>
-                        <CarFooter>
-                          <ActionButton
-                            href={
-                              window.innerWidth < 600
-                                ? "tel: +251 " + contact
-                                : "#"
-                            }
-                            style={
-                              window.innerWidth < 600
-                                ? { pointerEvents: "all" }
-                                : { pointerEvents: "none" }
-                            }
-                          >
-                            <PhoneIcon />
-                            {window.innerWidth < 600
-                              ? "Click to call"
-                              : "+251 " + contact}
-                          </ActionButton>
-                          <p>
-                            {commission.split(" ")[0]} <br /> commission
-                          </p>
-                        </CarFooter>
-                      </CarDetails>
-                    </CarContainer>
-                  );
-                }
-              )}
+                          <PhoneIcon />
+                          {window.innerWidth < 600
+                            ? "Click to call"
+                            : "+251 " + contact}
+                        </ActionButton>
+                        <p>
+                          {commission.split(" ")[0]} <br /> commission
+                        </p>
+                      </CarFooter>
+                    </CarDetails>
+                  </CarContainer>
+                );
+              }
+            )}
           </CarsWrapper>
         </>
       )}
