@@ -16,8 +16,6 @@ import {
   ActionButton,
 } from "../styles/Car.style";
 
-import { FilterBar, Select } from "../styles/Filter.style";
-
 import { ReactComponent as PhoneIcon } from "../assets/phone.svg";
 import { ReactComponent as ImageIcon } from "../assets/image.svg";
 
@@ -38,18 +36,9 @@ function Car({ cars }) {
 
   return (
     <>
-      {cars && (
+      {/* // cars.length on it's own displays 0 when empty, !! makes it boolean */}
+      {!!cars.length && (
         <>
-          <FilterBar>
-            <label>Filter by:</label>
-            <Select defaultValue="" onChange={() => {}}>
-              <option value="" disabled hidden>
-                Year
-              </option>
-              <option value="2001">2001</option>
-              <option value="2005">2005</option>
-            </Select>
-          </FilterBar>
           <CarsWrapper>
             <h1>Latest</h1>
 
@@ -116,7 +105,7 @@ function Car({ cars }) {
                                     currency: "ETB",
                                     minimumFractionDigits: 0,
                                     maximumFractionDigits: 0,
-                                  }).format(loan)} br.`
+                                  }).format(loan)}`
                                 : "Not available!"}
                             </p>
                           </div>
