@@ -75,7 +75,7 @@ export default function Navbar() {
       <Logo href="/">
         Mekina<span>App</span>
       </Logo>
-      <Hamburger onClick={() => setisOpen(!isOpen)}>
+      {/* <Hamburger onClick={() => setisOpen(!isOpen)}>
         <span />
         <span />
         <span />
@@ -84,7 +84,7 @@ export default function Navbar() {
         <MenuLink href="/cars">All Cars</MenuLink>
         <MenuLink href="/info">Sell Car</MenuLink>
         <MenuLink href="/favs">Your Cars</MenuLink>
-      </Menu>
+      </Menu> */}
     </Nav>
   );
 }

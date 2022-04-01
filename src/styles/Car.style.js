@@ -5,6 +5,17 @@ export const CarsWrapper = styled.div`
   grid-gap: var(--spacing-medium) var(--spacing-regular);
   grid-template-columns: repeat(auto-fit, minmax(300px, 320px));
   justify-content: center;
+
+  h1 {
+    grid-column: 1 / -1;
+    line-height: 0.8;
+    font-size: var(--text-regular);
+    color: var(--clr-grey-600);
+    letter-spacing: var(--spacing-xsmall);
+    font-weight: 500;
+
+    margin-bottom: calc(-1 * var(--spacing-base));
+  }
 `;
 
 export const CarContainer = styled.div`
@@ -45,19 +56,19 @@ export const CarDate = styled.span`
 export const CarDescription = styled.div`
   label {
     font-size: var(--text-xsmall);
-    color: var(--clr-grey-200);
+    color: var(--clr-grey-500);
   }
 
-  p {
-    line-height: 1;
-    color: var(--clr-grey-300);
+  & > p {
+    line-height: 1.5;
+    color: var(--clr-grey-500);
     margin-bottom: var(--spacing-small);
     font-size: var(--text-base);
   }
 `;
 
 export const CarDescriptionGroup = styled.div`
-  margin-top: var(--spacing-base);
+  margin-top: var(--spacing-regular);
 
   display: flex;
   flex-wrap: wrap;
@@ -79,7 +90,7 @@ export const CarDescriptionGroup = styled.div`
 export const CarImageContainer = styled.div`
   position: relative;
 
-  button {
+  & > button {
     position: absolute;
     right: var(--spacing-small);
     bottom: var(--spacing-base);
@@ -92,7 +103,7 @@ export const CarImageContainer = styled.div`
     align-items: flex-end;
 
     & span {
-      color: var(--clr-grey-100);
+      color: var(--clr-grey-200);
       line-height: 1;
     }
 
