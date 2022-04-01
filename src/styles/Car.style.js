@@ -90,7 +90,7 @@ export const CarDescriptionGroup = styled.div`
 export const CarImageContainer = styled.div`
   position: relative;
 
-  button {
+  & > button {
     position: absolute;
     right: var(--spacing-small);
     bottom: var(--spacing-base);

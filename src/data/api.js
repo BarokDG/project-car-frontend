@@ -7,7 +7,9 @@ export const getCarsAPI = async (pageNumber = 1, filterOptions) => {
     let filterQueryString = "";
 
     for (let key in filterOptions) {
-      filterQueryString += `&${key}=${filterOptions[key]}`;
+      filterQueryString += `&${key}=${
+        filterOptions[key] ? filterOptions[key] : ""
+      }`;
     }
 
     const { data } = await axios.get(
