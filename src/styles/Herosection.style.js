@@ -25,7 +25,7 @@ export const ActionWrapper = styled.div`
 
     & input[type="search"] {
       width: 100%;
-      padding: 20px 40px;
+      padding: var(--spacing-regular);
       font-size: var(--text-medium);
 
       border: 1px solid;
@@ -35,31 +35,35 @@ export const ActionWrapper = styled.div`
         outline: none;
       }
     }
+  }
 
-    .actions {
-      position: absolute;
-      right: 20px;
-      top: 0;
-      bottom: 0;
-      margin: auto 0;
-      height: max-content;
+  .actions {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: max-content;
 
-      display: flex;
+    display: flex;
 
-      & > * {
-        border-radius: var(--spacing-medium);
-        border: none;
-        background: none;
-        font-size: var(--text-regular);
-        cursor: pointer;
-        padding: var(--spacing-base) var(--spacing-medium);
-      }
+    & > * {
+      border-radius: var(--spacing-medium);
+      border: none;
+      background: none;
+      font-size: var(--text-regular);
+      cursor: pointer;
+      padding: var(--spacing-base) var(--spacing-medium);
+    }
 
-      & > input[type="submit"] {
-        order: 1;
-        background: var(--clr-primary-600);
-        color: var(--clr-primary-100);
-      }
+    & > input[type="submit"] {
+      order: 1;
+      background: var(--clr-primary-600);
+      color: var(--clr-primary-100);
+    }
+
+    & > button {
+      padding-right: var(--spacing-regular);
     }
   }
 
@@ -69,10 +73,17 @@ export const ActionWrapper = styled.div`
     bottom: var(--spacing-base);
   }
 
+  @media (max-width: 768px) {
+    & .actions > * {
+      font-size: var(--text-base);
+    }
+  }
+
   @media (max-width: 600px) {
     & h1 {
-      font-size: var(--text-small);
+      font-size: var(--text-base);
       text-align: left;
+      margin-bottom: var(--spacing-base);
     }
 
     & input {
@@ -87,6 +98,33 @@ export const ActionWrapper = styled.div`
       font-size: var(--text-small);
 
       border-radius: 0;
+    }
+  }
+
+  @media (max-width: 700px) {
+    width: 90%;
+
+    & form input[type="search"] {
+      padding-left: var(--spacing-regular);
+    }
+
+    & .actions {
+      top: 100%;
+      right: 0;
+      margin: 0;
+
+      & input[type="submit"] {
+        border-radius: 0;
+      }
+    }
+  }
+
+  @media (max-width: 475px) {
+    width: 100%;
+
+    & form input[type="search"] {
+      padding: var(--spacing-base);
+      font-size: var(--text-regular);
     }
   }
 `;

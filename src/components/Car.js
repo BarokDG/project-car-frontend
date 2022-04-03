@@ -53,8 +53,8 @@ function Car({ cars, sortUtil, updateSortUtil }) {
                 updateSortUtil({ ...sortUtil });
               }}
             >
-              <option value="dyear">Newest</option>
-              <option value="ayear">Oldest</option>
+              <option value="dyear">Newest Age</option>
+              <option value="ayear">Oldest Age</option>
               <option value="dcreatedAt">Recently Added</option>
               <option value="dprice">Highest Price</option>
               <option value="aprice">Lowest Price</option>

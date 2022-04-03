@@ -16,6 +16,7 @@ import { Loader, LoaderContainer } from "../styles/Loader.style";
 import { ModalContainer } from "../styles/Modal.style";
 
 import { getCarsAPI } from "../data/api";
+import { cleanup } from "@testing-library/react";
 
 export default function CarPage() {
   const [cars, setCars] = useState(null);
@@ -23,6 +24,9 @@ export default function CarPage() {
   // for pagination
   const [pageNumber, setPageNumber] = useState(1);
   const [filterRules, setFilterRules] = useState({});
+
+  // for responsiveness
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const getCars = async (pageNumber) => {
     // To resume loader
@@ -66,6 +70,16 @@ export default function CarPage() {
     getCars(pageNumber, filterRules);
   }, [pageNumber, filterRules]);
 
+  useEffect(() => {
+    window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
+
+    cleanup(() => {
+      window.removeEventListener("resize", () =>
+        setWindowWidth(window.innerWidth)
+      );
+    });
+  }, []);
+
   return (
     <>
       {!cars && (
@@ -92,82 +106,83 @@ export default function CarPage() {
             <button onClick={clearFilter}>Clear</button>
           </div>
         </form>
-        <FilterBar>
-          <FilterBarItem>
-            <div>
-              <label htmlFor="">Year</label>
-              <select name="start" id="" defaultValue="">
-                <option value="" hidden>
-                  From
-                </option>
-                <option value="">Any</option>
-                <option value="1980">1980</option>
-                <option value="1990">1990</option>
-                <option value="2000">2000</option>
-                <option value="2010">2010</option>
-                <option value="2020">2020</option>
-              </select>
-              <select name="end" id="">
-                <option value="" hidden>
-                  To
-                </option>
-                <option value="">Any</option>
-                <option value="1980">1980</option>
-                <option value="1990">1990</option>
-                <option value="2000">2000</option>
-                <option value="2010">2010</option>
-                <option value="2020">2020</option>
-              </select>
-            </div>
-          </FilterBarItem>
-          <FilterBarItem>
-            <div>
-              <label htmlFor="">Price</label>
-              <select name="min" id="" defaultValue="">
-                <option value="" hidden>
-                  Min
-                </option>
-                <option value="">Any</option>
-                <option value="500000">500000</option>
-                <option value="750000">750000</option>
-                <option value="1000000">1000000</option>
-                <option value="1500000">1500000</option>
-                <option value="2000000">2000000</option>
-              </select>
-              <select name="max" id="">
-                <option value="" hidden>
-                  Max
-                </option>
-                <option value="">Any</option>
-                <option value="500000">500000</option>
-                <option value="750000">750000</option>
-                <option value="1000000">1000000</option>
-                <option value="1500000">1500000</option>
-                <option value="2000000">2000000</option>
-              </select>
-            </div>
-          </FilterBarItem>
-          <FilterBarItem>
-            <div>
-              <label htmlFor="">Transmission</label>
-              <select name="transmission" id="" defaultValue="">
-                <option value="">Any</option>
-                <option value="automatic">Automatic</option>
-                <option value="manual">Manual</option>
-              </select>
-            </div>
-          </FilterBarItem>
-          <FilterBarItem>
-            <div>
-              <label htmlFor="loan">Loan</label>
-              <SwitchContainer>
-                <input type="checkbox" name="loan" id="" />
-                <Switch />
-                <span>Available</span>
-              </SwitchContainer>
-            </div>
-          </FilterBarItem>
-          {/* <FilterBarItem>
+        {windowWidth > 700 && (
+          <FilterBar>
+            <FilterBarItem>
+              <div>
+                <label htmlFor="">Year</label>
+                <select name="start" id="" defaultValue="">
+                  <option value="" hidden>
+                    From
+                  </option>
+                  <option value="">Any</option>
+                  <option value="1980">1980</option>
+                  <option value="1990">1990</option>
+                  <option value="2000">2000</option>
+                  <option value="2010">2010</option>
+                  <option value="2020">2020</option>
+                </select>
+                <select name="end" id="">
+                  <option value="" hidden>
+                    To
+                  </option>
+                  <option value="">Any</option>
+                  <option value="1980">1980</option>
+                  <option value="1990">1990</option>
+                  <option value="2000">2000</option>
+                  <option value="2010">2010</option>
+                  <option value="2020">2020</option>
+                </select>
+              </div>
+            </FilterBarItem>
+            <FilterBarItem>
+              <div>
+                <label htmlFor="">Price</label>
+                <select name="min" id="" defaultValue="">
+                  <option value="" hidden>
+                    Min
+                  </option>
+                  <option value="">Any</option>
+                  <option value="500000">500000</option>
+                  <option value="750000">750000</option>
+                  <option value="1000000">1000000</option>
+                  <option value="1500000">1500000</option>
+                  <option value="2000000">2000000</option>
+                </select>
+                <select name="max" id="">
+                  <option value="" hidden>
+                    Max
+                  </option>
+                  <option value="">Any</option>
+                  <option value="500000">500000</option>
+                  <option value="750000">750000</option>
+                  <option value="1000000">1000000</option>
+                  <option value="1500000">1500000</option>
+                  <option value="2000000">2000000</option>
+                </select>
+              </div>
+            </FilterBarItem>
+            <FilterBarItem>
+              <div>
+                <label htmlFor="">Transmission</label>
+                <select name="transmission" id="" defaultValue="">
+                  <option value="">Any</option>
+                  <option value="automatic">Automatic</option>
+                  <option value="manual">Manual</option>
+                </select>
+              </div>
+            </FilterBarItem>
+            <FilterBarItem>
+              <div>
+                <label htmlFor="loan">Loan</label>
+                <SwitchContainer>
+                  <input type="checkbox" name="loan" id="" />
+                  <Switch />
+                  <span>Available</span>
+                </SwitchContainer>
+              </div>
+            </FilterBarItem>
+            {/* <FilterBarItem>
             <button className="clear" onClick={clearFilter}>
               Clear
             </button>
@@ -175,7 +190,8 @@ export default function CarPage() {
               Filter
             </button>
           </FilterBarItem> */}
-        </FilterBar>
+          </FilterBar>
+        )}
       </ActionWrapper>
       {cars && (
         <>

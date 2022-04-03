@@ -10,7 +10,7 @@ export const CarsWrapper = styled.div`
     grid-column: 1 / -1;
     justify-self: start;
     margin-bottom: calc(-1 * var(--spacing-base));
-    font-size: var(--text-regular);
+    font-size: var(--text-base);
     color: var(--clr-grey-900);
     letter-spacing: var(--spacing-xsmall);
     font-weight: 500;
