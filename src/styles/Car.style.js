@@ -159,7 +159,6 @@ export const ActionButton = styled.a`
 
   & svg {
     width: 20px;
-
     margin-right: var(--spacing-small);
   }
 `;

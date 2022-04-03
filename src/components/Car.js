@@ -43,6 +43,7 @@ function Car({ cars, sortUtil, updateSortUtil }) {
             <select
               name="sort"
               id=""
+              defaultValue="dcreatedAt"
               value={sortUtil.sort}
               onChange={(e) => {
                 sortUtil.sort = e.target.value;

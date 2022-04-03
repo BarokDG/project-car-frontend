@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const Hero = styled.div`
-  background-color: linear-gradient(45deg, blue, red);
-`;
-
 export const ActionWrapper = styled.div`
   max-width: 1000px;
   width: 75vw;
@@ -67,15 +63,52 @@ export const ActionWrapper = styled.div`
     }
   }
 
-  & > button {
-    position: absolute;
-    right: var(--spacing-base);
-    bottom: var(--spacing-base);
+  & > .open-filter {
+    --button-clr: black;
+    padding: var(--spacing-small);
+    align-self: start;
+    background: none;
+    border: none;
+    font-size: var(--text-base);
+    display: inline-block;
+    margin-top: var(--spacing-small);
+
+    color: var(--button-clr);
+    font-weight: 500;
+    letter-spacing: var(--spacing-xsmall);
+    cursor: pointer;
+    svg {
+      width: 12px;
+      margin-left: var(--spacing-small);
+      vertical-align: baseline;
+      fill: var(--button-clr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    width: 90%;
   }
 
   @media (max-width: 768px) {
+    width: 100%;
     & .actions > * {
       font-size: var(--text-base);
+    }
+  }
+
+  @media (max-width: 700px) {
+    & form input[type="search"] {
+      padding-left: var(--spacing-regular);
+    }
+
+    & .actions {
+      top: 100%;
+      right: 0;
+      margin: 0;
+
+      & input[type="submit"] {
+        border-radius: 0;
+      }
     }
   }
 
@@ -98,24 +131,6 @@ export const ActionWrapper = styled.div`
       font-size: var(--text-small);
 
       border-radius: 0;
-    }
-  }
-
-  @media (max-width: 700px) {
-    width: 90%;
-
-    & form input[type="search"] {
-      padding-left: var(--spacing-regular);
-    }
-
-    & .actions {
-      top: 100%;
-      right: 0;
-      margin: 0;
-
-      & input[type="submit"] {
-        border-radius: 0;
-      }
     }
   }
 
@@ -243,5 +258,28 @@ export const Pagination = styled.div`
     border: none;
     color: var(--clr-primary-100);
     font-weight: 700;
+  }
+`;
+
+export const BackToTop = styled.div`
+  position: sticky;
+  left: 100%;
+  bottom: var(--spacing-regular);
+
+  margin-top: 150vh;
+
+  width: var(--spacing-large);
+  height: var(--spacing-large);
+  background: var(--clr-primary-200);
+  border-radius: 50%;
+  border: 1px solid;
+
+  text-align: center;
+  font-size: var(--text-medium);
+  line-height: var(--spacing-medium);
+  cursor: pointer;
+
+  &:after {
+    content: "↑";
   }
 `;
