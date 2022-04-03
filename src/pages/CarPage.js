@@ -43,6 +43,7 @@ export default function CarPage() {
       filterRules[option] = document.querySelector(`[name=${option}]`).value;
     });
 
+    filterRules.keyword = document.querySelector("[name='search']").value;
     filterRules.loan = document.querySelector("[name='loan'").checked;
 
     setFilterRules({ ...filterRules });
@@ -82,14 +83,14 @@ export default function CarPage() {
           action=""
           onSubmit={(e) => {
             e.preventDefault();
-            filterRules.keyword = e.target.search.value;
-
-            setFilterRules({ ...filterRules });
-            setPageNumber(1);
+            handleFilter();
           }}
         >
           <input type="search" name="search" placeholder="Enter keywords..." />
-          <input type="submit" value="Search" />
+          <div className="actions">
+            <input type="submit" value="Search" />
+            <button onClick={clearFilter}>Clear</button>
+          </div>
         </form>
         <FilterBar>
           <FilterBarItem>
@@ -166,21 +167,25 @@ export default function CarPage() {
               </SwitchContainer>
             </div>
           </FilterBarItem>
-          <FilterBarItem>
+          {/* <FilterBarItem>
             <button className="clear" onClick={clearFilter}>
               Clear
             </button>
             <button className="filter" onClick={handleFilter}>
               Filter
             </button>
-          </FilterBarItem>
+          </FilterBarItem> */}
         </FilterBar>
       </ActionWrapper>
       {cars && (
         <>
           {cars.data.length ? (
             <>
-              <Car cars={cars.data} />
+              <Car
+                cars={cars.data}
+                sortUtil={filterRules}
+                updateSortUtil={setFilterRules}
+              />
               <Pagination>
                 {[
                   ...new Array(

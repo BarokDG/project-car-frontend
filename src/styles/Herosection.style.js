@@ -36,7 +36,7 @@ export const ActionWrapper = styled.div`
       }
     }
 
-    & input[type="submit"] {
+    .actions {
       position: absolute;
       right: 20px;
       top: 0;
@@ -44,17 +44,22 @@ export const ActionWrapper = styled.div`
       margin: auto 0;
       height: max-content;
 
-      border-radius: var(--spacing-medium);
+      display: flex;
 
-      border: none;
-      background: var(--clr-primary-600);
-      color: var(--clr-primary-100);
+      & > * {
+        border-radius: var(--spacing-medium);
+        border: none;
+        background: none;
+        font-size: var(--text-regular);
+        cursor: pointer;
+        padding: var(--spacing-base) var(--spacing-medium);
+      }
 
-      font-size: var(--text-regular);
-
-      cursor: pointer;
-
-      padding: var(--spacing-base) var(--spacing-medium);
+      & > input[type="submit"] {
+        order: 1;
+        background: var(--clr-primary-600);
+        color: var(--clr-primary-100);
+      }
     }
   }
 
@@ -89,12 +94,15 @@ export const ActionWrapper = styled.div`
 export const FilterBar = styled.div`
   display: flex;
   flex-wrap: wrap;
+  flex-basis: 0;
 `;
 
 export const FilterBarItem = styled.div`
   background: #f4f4ff;
   padding: var(--spacing-base) 0;
   flex-grow: 1;
+  flex-basis: 0;
+  min-width: 200px;
 
   display: flex;
   justify-content: center;
@@ -118,32 +126,6 @@ export const FilterBarItem = styled.div`
   & select {
     padding: var(--spacing-small) var(--spacing-base);
     margin-right: var(--spacing-xsmall);
-    // background: var(--clr-primary-100);
-  }
-
-  &:last-child {
-    padding-left: var(--spacing-regular);
-    padding-right: var(--spacing-regular);
-    justify-content: flex-end;
-    align-items: center;
-
-    & button {
-      background: none;
-      border: 1px solid var(--clr-primary-700);
-      cursor: pointer;
-      font-size: var(--text-base);
-      padding: var(--spacing-xsmall) 0;
-      flex-grow: 1;
-      flex-basis: 0;
-      max-width: 200px;
-      color: var(--clr-primary-700);
-    }
-
-    & .filter {
-      background: var(--clr-primary-200);
-      background: lime;
-      margin-left: var(--spacing-small);
-    }
   }
 `;
 

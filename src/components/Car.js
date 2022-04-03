@@ -19,7 +19,7 @@ import {
 import { ReactComponent as PhoneIcon } from "../assets/phone.svg";
 import { ReactComponent as ImageIcon } from "../assets/image.svg";
 
-function Car({ cars }) {
+function Car({ cars, sortUtil, updateSortUtil }) {
   const [showModal, setShowModal] = useState(false);
 
   // Need this to pass images to the modal
@@ -40,7 +40,25 @@ function Car({ cars }) {
       {!!cars.length && (
         <>
           <CarsWrapper>
-            <h1>Latest</h1>
+            <select
+              name="sort"
+              id=""
+              value={sortUtil.sort}
+              onChange={(e) => {
+                sortUtil.sort = e.target.value;
+                sortUtil.sortDirection = e.target.value.startsWith("a")
+                  ? 1
+                  : -1;
+
+                updateSortUtil({ ...sortUtil });
+              }}
+            >
+              <option value="dyear">Newest</option>
+              <option value="ayear">Oldest</option>
+              <option value="dcreatedAt">Recently Added</option>
+              <option value="dprice">Highest Price</option>
+              <option value="aprice">Lowest Price</option>
+            </select>
 
             {cars.map(
               (
