@@ -77,7 +77,7 @@ export default function Navbar() {
   return (
     <Nav>
       <Logo href="/">
-        Mekina<span>App</span>
+        Getz<span>Automotive</span>
       </Logo>
       <Hamburger onClick={() => setisOpen(!isOpen)}>
         <span />

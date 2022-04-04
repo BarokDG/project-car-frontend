@@ -54,8 +54,8 @@ function Car({ cars, sortUtil, updateSortUtil }) {
                 updateSortUtil({ ...sortUtil });
               }}
             >
-              <option value="dyear">Newest Age</option>
-              <option value="ayear">Oldest Age</option>
+              <option value="dyear">Newest Year</option>
+              <option value="ayear">Oldest Year</option>
               <option value="dcreatedAt">Recently Added</option>
               <option value="dprice">Highest Price</option>
               <option value="aprice">Lowest Price</option>
@@ -82,7 +82,7 @@ function Car({ cars, sortUtil, updateSortUtil }) {
                     <CarImageContainer>
                       <CarImage
                         src={
-                          "http://localhost:5000/" +
+                          "https://getzauto.herokuapp.com/" +
                           images[0].filePath.replace("\\", "/")
                         }
                       />

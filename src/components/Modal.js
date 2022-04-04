@@ -50,7 +50,7 @@ export default function Modal({ images, closeModal }) {
               <SlideShowItem className="slide" key={index}>
                 <img
                   src={
-                    "http://localhost:5000/" + image.filePath.replace("\\", "/")
+                    "https://getzauto.herokuapp.com/" + image.filePath.replace("\\", "/")
                   }
                   alt=""
                 />
