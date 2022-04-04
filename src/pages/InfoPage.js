@@ -113,15 +113,17 @@ export default function InfoPage() {
         <Header>Would you like to sell a car?</Header>
         <InfoWrapper>
           <Info>
-            <SecondHeading>Follow these simple steps: </SecondHeading>
+            <SecondHeading>የሚሸጡት? ወይም የሚገዙት? አሊያም የሚለውጡት🚙
+መኪና ካሎት</SecondHeading>
             <Ul>
+              
               <CustomLi>
                 <Li width="10" height="20">
                   <line x1="5" y1="6" x2="10" y2="11" />
                   <line x1="0" y1="11" x2="10" y2="11" />
                   <line x1="10" y1="11" x2="5" y2="16" />
                 </Li>
-                Create telegram account
+                በሁሉም አቅጣጫ ውስጡን ጨምሮ በግልጽ የሚያሳይ ፎቶ ያንሱ
               </CustomLi>
               <CustomLi>
                 <Li width="10" height="20">
@@ -129,7 +131,7 @@ export default function InfoPage() {
                   <line x1="0" y1="11" x2="10" y2="11" />
                   <line x1="10" y1="11" x2="5" y2="16" />
                 </Li>
-                Take good photos of your car-both inside and out
+                ሁሉንም አስፈላጊ መረጃ በማያያዝ Telegram ላይ በ @Getzauto ወይም @Getzauto2 ይላኩልን
               </CustomLi>
               <CustomLi>
                 <Li width="10" height="20">
@@ -137,19 +139,11 @@ export default function InfoPage() {
                   <line x1="0" y1="11" x2="10" y2="11" />
                   <line x1="10" y1="11" x2="5" y2="16" />
                 </Li>
-                Enter necessary car details
-              </CustomLi>
-              <CustomLi>
-                <Li width="10" height="20">
-                  <line x1="5" y1="6" x2="10" y2="11" />
-                  <line x1="0" y1="11" x2="10" y2="11" />
-                  <line x1="10" y1="11" x2="5" y2="16" />
-                </Li>
-                Contact @Getzauto on telegram
+                የሚልኩልን ዋጋ የፍተሻ ዋጋ ነዉ
               </CustomLi>
             </Ul>
             <p>
-              Check out our telegram channel{" "}
+            Telegram ቻናላችንን እቺን በመንካታ ይቀላቀሉ 👉🏽 {" "}
               <i>
                 <a href="https://t.me/i102020">GETZ AUTOMOTIVE</a>
               </i>{" "}
