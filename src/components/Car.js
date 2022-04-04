@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import Modal from "./Modal";
 
@@ -102,7 +102,7 @@ function Car({ cars, sortUtil, updateSortUtil }) {
                       </CarTitle>
                       <CarDate>{year}</CarDate>
                       <CarDescription>
-                        <p>{comment}</p>
+                        <p>{comment || "Comment not provided"}</p>
                         <CarDescriptionGroup>
                           <div>
                             <label>Price</label>
@@ -130,7 +130,7 @@ function Car({ cars, sortUtil, updateSortUtil }) {
                           </div>
                           <div>
                             <label>Transmission</label>
-                            <p>{transmission}</p>
+                            <p>{transmission || "N/A"}</p>
                           </div>
                         </CarDescriptionGroup>
                       </CarDescription>
@@ -144,7 +144,7 @@ function Car({ cars, sortUtil, updateSortUtil }) {
                           style={
                             window.innerWidth < 600
                               ? { pointerEvents: "all" }
-                              : { pointerEvents: "none" }
+                              : { pointerEvents: "text" }
                           }
                         >
                           <PhoneIcon />
