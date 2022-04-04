@@ -16,36 +16,7 @@ const Container = styled.div`
 
 const InfoWrapper = styled.div`
   background-color: #e1e1e1;
-  background-image: repeating-linear-gradient(
-      120deg,
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.1) 1px,
-      transparent 1px,
-      transparent 60px
-    ),
-    repeating-linear-gradient(
-      60deg,
-      rgba(255, 255, 255, 0.1),
-      rgba(255, 255, 255, 0.1) 1px,
-      transparent 1px,
-      transparent 60px
-    ),
-    linear-gradient(
-      60deg,
-      rgba(0, 0, 0, 0.1) 25%,
-      transparent 25%,
-      transparent 75%,
-      rgba(0, 0, 0, 0.1) 75%,
-      rgba(0, 0, 0, 0.1)
-    ),
-    linear-gradient(
-      120deg,
-      rgba(0, 0, 0, 0.1) 25%,
-      transparent 25%,
-      transparent 75%,
-      rgba(0, 0, 0, 0.1) 75%,
-      rgba(0, 0, 0, 0.1)
-    );
+  
   background-size: 70px 120px;
   display: grid;
   border-radius: 5px;
