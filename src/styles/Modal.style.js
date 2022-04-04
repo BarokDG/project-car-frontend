@@ -28,7 +28,17 @@ export const ModalContainer = styled.div`
     opacity: ${(props) => (props.loader ? 0.1 : 0.7)};
   }
 
-  & > button {
+  & .close-modal {
+    position: absolute;
+    top: var(--spacing-base);
+    right: var(--spacing-base);
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    color: var(--clr-grey-100);
+    font-size: var(--text-large);
+  }
+
+  & .slide-control {
     position: absolute;
     border-radius: 50%;
     border: none;
@@ -44,11 +54,11 @@ export const ModalContainer = styled.div`
     color: var(--clr-primary-700);
   }
 
-  .prev {
+  & #prev {
     left: var(--spacing-medium);
   }
 
-  .next {
+  & #next {
     right: var(--spacing-medium);
   }
 
@@ -92,18 +102,18 @@ export const ModalContainer = styled.div`
   }
 
   @media (max-width: 600px) {
-    & > button {
+    & .slide-control {
       width: var(--spacing-large);
       height: var(--spacing-large);
       top: unset;
       bottom: 10%;
     }
 
-    .prev {
+    #prev {
       left: calc(50% - var(--spacing-xlarge));
     }
 
-    .next {
+    #next {
       right: calc(50% - var(--spacing-xlarge));
     }
   }
@@ -119,6 +129,18 @@ export const SlideShowContainer = styled.div`
 
 export const SlideShowItem = styled.div`
   display: none;
+
+  & .slide-position {
+    position: absolute;
+    top: var(--spacing-base);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--clr-grey-100);
+    padding: var(--spacing-base) var(--spacing-medium);
+    font-family: monospace;
+    font-size: var(--text-regular);
+  }
 
   & img {
     display: block;

@@ -26,7 +26,6 @@ export default function CarPage() {
   // for responsiveness
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  
   const handleFilter = async () => {
     let options = ["start", "end", "min", "max", "transmission"];
 
@@ -58,10 +57,10 @@ export default function CarPage() {
   };
 
   useEffect(() => {
-    const getCars = async (pageNumber) => {
+    const getCars = async () => {
       // To resume loader
       setCars(null);
-  
+
       try {
         const carsList = await getCarsAPI(pageNumber, filterRules);
         setCars(carsList);
@@ -69,8 +68,8 @@ export default function CarPage() {
         console.log(error);
       }
     };
-  
-    getCars(pageNumber, filterRules);
+
+    getCars();
   }, [pageNumber, filterRules]);
 
   useEffect(() => {
