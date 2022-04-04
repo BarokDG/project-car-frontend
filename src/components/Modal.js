@@ -57,7 +57,7 @@ export default function Modal({ images, closeModal }) {
                   </div>
                   <img
                     src={
-                      "http://localhost:5000/" +
+                      "https://getzauto.herokuapp.com/" +
                       image.filePath.replace("\\", "/")
                     }
                     alt=""
