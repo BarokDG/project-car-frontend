@@ -11,7 +11,11 @@ const Nav = styled.div`
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
-    padding: var(--spacing-regular) var(--spacing-base);
+    // padding: var(--spacing-regular) var(--spacing-base);
+    padding: 0;
+  }
+
+  @media (max-width: 475px) {
   }
 `;
 

@@ -52,6 +52,45 @@ export const ModalContainer = styled.div`
     right: var(--spacing-medium);
   }
 
+  @media (max-width: 700px) {
+    & > .filter-modal {
+      width: 90vw;
+      max-width: 400px;
+      margin: auto;
+
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+
+      & > h3 {
+        background: var(--clr-primary-100);
+        color: var(--clr-grey-900);
+        font-size: var(--text-regular);
+        font-weight: 400;
+        margin-bottom: 0;
+        padding: var(--spacing-regular);
+        padding-bottom: var(--spacing-base);
+      }
+
+      & > .filter-apply {
+        padding: var(--spacing-base) var(--spacing-regular);
+        background: var(--clr-primary-100);
+
+        & > button {
+          border: none;
+          background: none;
+          padding: var(--spacing-base) var(--spacing-medium);
+          cursor: pointer;
+        }
+
+        & > .filter-primary {
+          background: var(--clr-primary-400);
+          color: var(--clr-grey-100);
+        }
+      }
+    }
+  }
+
   @media (max-width: 600px) {
     & > button {
       width: var(--spacing-large);

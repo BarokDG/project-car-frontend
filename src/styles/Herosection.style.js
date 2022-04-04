@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const Hero = styled.div`
-  background-color: linear-gradient(45deg, blue, red);
-`;
-
 export const ActionWrapper = styled.div`
   max-width: 1000px;
   width: 75vw;
@@ -25,7 +21,7 @@ export const ActionWrapper = styled.div`
 
     & input[type="search"] {
       width: 100%;
-      padding: 20px 40px;
+      padding: var(--spacing-regular);
       font-size: var(--text-medium);
 
       border: 1px solid;
@@ -35,39 +31,92 @@ export const ActionWrapper = styled.div`
         outline: none;
       }
     }
+  }
 
-    & input[type="submit"] {
-      position: absolute;
-      right: 20px;
-      top: 0;
-      bottom: 0;
-      margin: auto 0;
-      height: max-content;
+  .actions {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: max-content;
 
+    display: flex;
+
+    & > * {
       border-radius: var(--spacing-medium);
-
       border: none;
+      background: none;
+      font-size: var(--text-regular);
+      cursor: pointer;
+      padding: var(--spacing-base) var(--spacing-medium);
+    }
+
+    & > input[type="submit"] {
+      order: 1;
       background: var(--clr-primary-600);
       color: var(--clr-primary-100);
+    }
 
-      font-size: var(--text-regular);
-
-      cursor: pointer;
-
-      padding: var(--spacing-base) var(--spacing-medium);
+    & > button {
+      padding-right: var(--spacing-regular);
     }
   }
 
-  & > button {
-    position: absolute;
-    right: var(--spacing-base);
-    bottom: var(--spacing-base);
+  & > .open-filter {
+    --button-clr: black;
+    padding: var(--spacing-small);
+    align-self: start;
+    background: none;
+    border: none;
+    font-size: var(--text-base);
+    display: inline-block;
+    margin-top: var(--spacing-small);
+
+    color: var(--button-clr);
+    font-weight: 500;
+    letter-spacing: var(--spacing-xsmall);
+    cursor: pointer;
+    svg {
+      width: 12px;
+      margin-left: var(--spacing-small);
+      vertical-align: baseline;
+      fill: var(--button-clr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    width: 90%;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    & .actions > * {
+      font-size: var(--text-base);
+    }
+  }
+
+  @media (max-width: 700px) {
+    & form input[type="search"] {
+      padding-left: var(--spacing-regular);
+    }
+
+    & .actions {
+      top: 100%;
+      right: 0;
+      margin: 0;
+
+      & input[type="submit"] {
+        border-radius: 0;
+      }
+    }
   }
 
   @media (max-width: 600px) {
     & h1 {
-      font-size: var(--text-small);
+      font-size: var(--text-base);
       text-align: left;
+      margin-bottom: var(--spacing-base);
     }
 
     & input {
@@ -84,17 +133,57 @@ export const ActionWrapper = styled.div`
       border-radius: 0;
     }
   }
+
+  @media (max-width: 475px) {
+    width: 100%;
+
+    & form input[type="search"] {
+      padding: var(--spacing-base);
+      font-size: var(--text-regular);
+    }
+  }
 `;
 
 export const FilterBar = styled.div`
   display: flex;
   flex-wrap: wrap;
+  flex-basis: 0;
+
+  @media (max-width: 700px) {
+    display: block;
+    padding: var(--spacing-base) var(--spacing-regular);
+    background: var(--clr-grey-100);
+
+    & > div {
+      border: none;
+      background: none;
+      display: block;
+      margin-bottom: var(--spacing-base);
+
+      & label {
+        font-size: var(--text-base);
+      }
+
+      & select {
+        display: block;
+        width: 100%;
+        padding: var(--spacing-base);
+        margin-bottom: var(--spacing-small);
+      }
+    }
+
+    & > div:first-child {
+      border-left: none;
+    }
+  }
 `;
 
 export const FilterBarItem = styled.div`
   background: #f4f4ff;
   padding: var(--spacing-base) 0;
   flex-grow: 1;
+  flex-basis: 0;
+  min-width: 200px;
 
   display: flex;
   justify-content: center;
@@ -118,32 +207,6 @@ export const FilterBarItem = styled.div`
   & select {
     padding: var(--spacing-small) var(--spacing-base);
     margin-right: var(--spacing-xsmall);
-    // background: var(--clr-primary-100);
-  }
-
-  &:last-child {
-    padding-left: var(--spacing-regular);
-    padding-right: var(--spacing-regular);
-    justify-content: flex-end;
-    align-items: center;
-
-    & button {
-      background: none;
-      border: 1px solid var(--clr-primary-700);
-      cursor: pointer;
-      font-size: var(--text-base);
-      padding: var(--spacing-xsmall) 0;
-      flex-grow: 1;
-      flex-basis: 0;
-      max-width: 200px;
-      color: var(--clr-primary-700);
-    }
-
-    & .filter {
-      background: var(--clr-primary-200);
-      background: lime;
-      margin-left: var(--spacing-small);
-    }
   }
 `;
 
@@ -223,5 +286,26 @@ export const Pagination = styled.div`
     border: none;
     color: var(--clr-primary-100);
     font-weight: 700;
+  }
+`;
+
+export const BackToTop = styled.div`
+  position: fixed;
+  right: var(--spacing-medium);
+  bottom: var(--spacing-regular);
+
+  width: var(--spacing-large);
+  height: var(--spacing-large);
+  background: var(--clr-primary-200);
+  border-radius: 50%;
+  border: 1px solid;
+
+  text-align: center;
+  font-size: var(--text-medium);
+  line-height: var(--spacing-medium);
+  cursor: pointer;
+
+  &:after {
+    content: "↑";
   }
 `;

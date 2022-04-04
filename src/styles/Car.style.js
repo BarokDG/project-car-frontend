@@ -6,16 +6,25 @@ export const CarsWrapper = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 320px));
   justify-content: center;
 
-  h1 {
+  & select {
     grid-column: 1 / -1;
-    line-height: 0.8;
-    font-size: var(--text-regular);
-    color: var(--clr-grey-600);
+    justify-self: start;
+    margin-bottom: calc(-1 * var(--spacing-base));
+    font-size: var(--text-base);
+    color: var(--clr-grey-900);
     letter-spacing: var(--spacing-xsmall);
     font-weight: 500;
 
-    margin-bottom: calc(-1 * var(--spacing-base));
+    display: inline-block;
+
+    background: none;
+    border: none;
+    outline: none;
   }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 400px))
+  })
 `;
 
 export const CarContainer = styled.div`
@@ -150,7 +159,6 @@ export const ActionButton = styled.a`
 
   & svg {
     width: 20px;
-
     margin-right: var(--spacing-small);
   }
 `;
