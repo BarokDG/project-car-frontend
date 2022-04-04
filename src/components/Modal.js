@@ -38,6 +38,9 @@ export default function Modal({ images, closeModal }) {
   return (
     <>
       <ModalContainer>
+        <button className="close-modal" onClick={closeModal}>
+          &#10006;
+        </button>
         <SlideShowContainer
           onClick={(e) => {
             if (e.target === e.currentTarget) {
@@ -47,21 +50,35 @@ export default function Modal({ images, closeModal }) {
         >
           {images.map((image, index) => {
             return (
-              <SlideShowItem className="slide" key={index}>
-                <img
-                  src={
-                    "http://localhost:5000/" + image.filePath.replace("\\", "/")
-                  }
-                  alt=""
-                />
-              </SlideShowItem>
+              <>
+                <SlideShowItem className="slide" key={index}>
+                  <div className="slide-position">
+                    {index + 1 + " / " + images.length}
+                  </div>
+                  <img
+                    src={
+                      "http://localhost:5000/" +
+                      image.filePath.replace("\\", "/")
+                    }
+                    alt=""
+                  />
+                </SlideShowItem>
+              </>
             );
           })}
         </SlideShowContainer>
-        <button className="prev" onClick={() => plusSlides(-1)}>
+        <button
+          className="slide-control"
+          id="prev"
+          onClick={() => plusSlides(-1)}
+        >
           &#10094;
         </button>
-        <button className="next" onClick={() => plusSlides(1)}>
+        <button
+          className="slide-control"
+          id="next"
+          onClick={() => plusSlides(1)}
+        >
           &#10095;
         </button>
       </ModalContainer>
