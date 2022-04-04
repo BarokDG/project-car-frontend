@@ -109,7 +109,11 @@ export default function CarPage() {
           </div>
         </form>
 
-        {windowWidth > 700 ? <FilterBarWrapper /> : <MobileFilterBarWrapper />}
+        {windowWidth > 700 ? (
+          <FilterBarWrapper />
+        ) : (
+          <MobileFilterBarWrapper filterUtil={handleFilter} />
+        )}
       </ActionWrapper>
       {cars && (
         <>

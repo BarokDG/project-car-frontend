@@ -6,7 +6,7 @@ import { ModalContainer } from "../styles/Modal.style";
 
 import { ReactComponent as Filter } from "../assets/filter.svg";
 
-export default function MobileFilterBarWrapper() {
+export default function MobileFilterBarWrapper({ filterUtil }) {
   const [openFilter, setOpenFilter] = useState(false);
 
   return (
@@ -23,7 +23,22 @@ export default function MobileFilterBarWrapper() {
             }
           }}
         >
-          <FilterBarWrapper />
+          <div className="filter-modal">
+            <h3>Filter</h3>
+            <FilterBarWrapper />
+            <div className="filter-apply">
+              <button
+                className="filter-primary"
+                onClick={() => {
+                  filterUtil();
+                  setOpenFilter(false);
+                }}
+              >
+                Apply
+              </button>
+              <button onClick={() => setOpenFilter(false)}>Cancel</button>
+            </div>
+          </div>
         </ModalContainer>
       )}
     </>

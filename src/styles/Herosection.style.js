@@ -148,6 +148,34 @@ export const FilterBar = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-basis: 0;
+
+  @media (max-width: 700px) {
+    display: block;
+    padding: var(--spacing-base) var(--spacing-regular);
+    background: var(--clr-grey-100);
+
+    & > div {
+      border: none;
+      background: none;
+      display: block;
+      margin-bottom: var(--spacing-base);
+
+      & label {
+        font-size: var(--text-base);
+      }
+
+      & select {
+        display: block;
+        width: 100%;
+        padding: var(--spacing-base);
+        margin-bottom: var(--spacing-small);
+      }
+    }
+
+    & > div:first-child {
+      border-left: none;
+    }
+  }
 `;
 
 export const FilterBarItem = styled.div`
@@ -262,11 +290,9 @@ export const Pagination = styled.div`
 `;
 
 export const BackToTop = styled.div`
-  position: sticky;
-  left: 100%;
+  position: fixed;
+  right: var(--spacing-medium);
   bottom: var(--spacing-regular);
-
-  margin-top: 150vh;
 
   width: var(--spacing-large);
   height: var(--spacing-large);
