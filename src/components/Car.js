@@ -74,6 +74,7 @@ function Car({ cars, sortUtil, updateSortUtil }) {
                   contact,
                   commission,
                   loan,
+                  condition
                 },
                 index
               ) => {
@@ -102,7 +103,8 @@ function Car({ cars, sortUtil, updateSortUtil }) {
                       </CarTitle>
                       <CarDate>{year}</CarDate>
                       <CarDescription>
-                        <p>{comment || "Comment not provided"}</p>
+                        <p>{comment || ""}</p>
+                        <p>{condition || ""}</p>
                         <CarDescriptionGroup>
                           <div>
                             <label>Price</label>
