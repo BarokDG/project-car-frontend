@@ -55,13 +55,7 @@ export default function Modal({ images, closeModal }) {
                   <div className="slide-position">
                     {index + 1 + " / " + images.length}
                   </div>
-                  <img
-                    src={
-                      "https://getzauto.herokuapp.com/" +
-                      image.filePath.replace("\\", "/")
-                    }
-                    alt=""
-                  />
+                  <img src={image} alt="" />
                 </SlideShowItem>
               </>
             );

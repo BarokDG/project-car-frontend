@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const baseUrl = 'http://127.0.0.1:5000';
+const baseURL = "http://getzauto.herokuapp.com";
 const instance = axios.create({
-  baseURL: baseUrl,
+  baseURL,
   headers: {
     Accept: "application/json",
   },
