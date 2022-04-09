@@ -64,29 +64,24 @@ function Car({ cars, sortUtil, updateSortUtil }) {
             {cars.map(
               (
                 {
+                  comment,
+                  commission,
+                  condition,
+                  contact,
                   files: images,
+                  loan,
                   make,
                   model,
-                  comment,
-                  transmission,
                   price,
+                  transmission,
                   year,
-                  contact,
-                  commission,
-                  loan,
-                  condition
                 },
                 index
               ) => {
                 return (
                   <CarContainer key={index}>
                     <CarImageContainer>
-                      <CarImage
-                        src={
-                          "https://getzauto.herokuapp.com/" +
-                          images[0].filePath.replace("\\", "/")
-                        }
-                      />
+                      <CarImage src={images[0]} />
                       <button
                         onClick={() => {
                           setModalImages(images);

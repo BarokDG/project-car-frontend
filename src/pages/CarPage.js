@@ -50,7 +50,7 @@ export default function CarPage() {
     });
 
     if (document.querySelector("[name='loan']")) {
-      document.querySelector("[name='loan'").checked = false;
+      document.querySelector("[name='loan']").checked = false;
     }
 
     setFilterRules({});
@@ -92,7 +92,9 @@ export default function CarPage() {
           </LoaderContainer>
         </ModalContainer>
       )}
+
       <Nav />
+
       <ActionWrapper>
         <h1>Find cars by Make, Model or Keyword</h1>
         <form
@@ -115,6 +117,7 @@ export default function CarPage() {
           <MobileFilterBarWrapper filterUtil={handleFilter} />
         )}
       </ActionWrapper>
+
       {cars && (
         <>
           {cars.data.length ? (
