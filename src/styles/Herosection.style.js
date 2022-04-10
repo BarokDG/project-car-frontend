@@ -52,14 +52,17 @@ export const ActionWrapper = styled.div`
       padding: var(--spacing-base) var(--spacing-medium);
     }
 
-    & > input[type="submit"] {
+    & .actions__submit {
       order: 1;
       background: var(--clr-primary-600);
       color: var(--clr-primary-100);
     }
 
-    & > button {
+    & .actions__clear {
       padding-right: var(--spacing-regular);
+
+      //Apple support
+      color: var(--clr-grey-700);
     }
   }
 
@@ -207,6 +210,12 @@ export const FilterBarItem = styled.div`
   & select {
     padding: var(--spacing-small) var(--spacing-base);
     margin-right: var(--spacing-xsmall);
+
+    // Apple support
+    background: white;
+    color: var(--clr-grey-700);
+    font-size: var(--text-small);
+    border-radius: 0;
   }
 `;
 

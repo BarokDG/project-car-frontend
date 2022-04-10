@@ -103,8 +103,10 @@ export default function CarPage() {
         >
           <input type="search" name="search" placeholder="Enter keywords..." />
           <div className="actions">
-            <input type="submit" value="Search" />
-            <button onClick={clearFilter}>Clear</button>
+            <input type="submit" value="Search" className="actions__submit" />
+            <button onClick={clearFilter} className="actions__clear">
+              Clear
+            </button>
           </div>
         </form>
 

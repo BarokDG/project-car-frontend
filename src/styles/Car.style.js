@@ -87,7 +87,7 @@ export const CarDescriptionParagraphs = styled.div`
 
   @media (min-width: 768px) {
     position: relative;
-    height: 5ch;
+    height: 5.1ch;
     overflow: hidden;
     pointer-events: none;
 
@@ -178,7 +178,10 @@ export const CarImageContainer = styled.div`
     background: var(--clr-grey-600);
 
     display: flex;
-    align-items: flex-end;
+
+    // Apple support
+    align-items: center;
+    font-size: var(--text-small);
 
     & span {
       color: var(--clr-grey-200);
