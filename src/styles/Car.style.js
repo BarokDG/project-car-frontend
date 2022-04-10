@@ -104,12 +104,14 @@ export const CarDescriptionParagraphs = styled.div`
       bottom: 0;
       right: 0;
       background: var(--clr-grey-200);
+      border-radius: var(--spacing-small);
       color: var(--clr-grey-700);
 
-      padding: var(--spacing-xsmall);
+      padding: 0 var(--spacing-small);
 
       &:after {
-        content: "More";
+        content: "•••";
+        line-height: 0.5;
       }
     }
 
@@ -119,11 +121,13 @@ export const CarDescriptionParagraphs = styled.div`
       & .overflow-container {
         background: var(--clr-grey-100);
         padding: var(--spacing-regular) var(--spacing-small);
-        height: 250px;
+        height: 230px;
 
         display: flex;
         flex-direction: column;
         justify-content: center;
+
+        overflow: auto;
       }
 
       & p {

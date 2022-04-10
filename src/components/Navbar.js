@@ -10,17 +10,14 @@ const Nav = styled.div`
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
-    // padding: var(--spacing-regular) var(--spacing-base);
     padding: 0;
-  }
-
-  @media (max-width: 475px) {
   }
 `;
 
 const Hamburger = styled.div`
   display: none;
   flex-direction: column;
+
   span {
     height: 2px;
     width: 25px;
@@ -28,6 +25,7 @@ const Hamburger = styled.div`
     margin-bottom: 4px;
     border-radius: 5px;
   }
+
   @media (max-width: 768px) {
     display: flex;
   }
@@ -44,6 +42,7 @@ const Logo = styled.a`
     font-size: 1.9rem;
   }
 `;
+
 const Menu = styled.div`
   display: flex;
   justify-content: space-between;
@@ -58,16 +57,23 @@ const Menu = styled.div`
   }
 `;
 const MenuLink = styled.a`
-  padding: 1rem 2rem;
+  padding: var(--spacing-base) var(--spacing-regular);
   cursor: pointer;
-  color: var(--clr-primary-400);
+  color: var(--clr-primary-500);
   font-weight: 500;
   font-size: 1rem;
   text-align: center;
   text-decoration: none;
 
-  &:hover {
-    color: var(--clr-primary-400);
+  &:last-child {
+    border: 1px solid;
+    margin-left: var(--spacing-base);
+    background: #cbcdfba0;
+    border-radius: var(--spacing-base);
+
+    &:hover {
+      background: #cbcdfb70;
+    }
   }
 `;
 
@@ -85,7 +91,7 @@ export default function Navbar() {
       </Hamburger>
       <Menu isOpen={isOpen}>
         <MenuLink href="/">All Cars</MenuLink>
-        <MenuLink href="/info">Sell Car</MenuLink>
+        <MenuLink href="/info">Want to sell a car?</MenuLink>
       </Menu>
     </Nav>
   );

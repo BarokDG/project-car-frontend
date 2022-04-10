@@ -34,8 +34,13 @@ export const ModalContainer = styled.div`
     right: var(--spacing-base);
     background: rgba(0, 0, 0, 0.3);
     border: none;
-    color: var(--clr-grey-100);
-    font-size: var(--text-large);
+    padding: var(--spacing-small) var(--spacing-base);
+
+    & svg {
+      fill: var(--clr-grey-200);
+      width: var(--spacing-medium);
+      display: inline;
+    }
   }
 
   & .slide-control {
