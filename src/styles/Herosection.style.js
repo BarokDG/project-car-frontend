@@ -26,6 +26,10 @@ export const ActionWrapper = styled.div`
 
       border: 1px solid;
 
+      // Apple support
+      background: var(--clr-grey-100);
+      border-radius: 0;
+
       &:focus,
       &:focus-within {
         outline: none;
