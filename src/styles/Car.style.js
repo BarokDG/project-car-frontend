@@ -63,16 +63,81 @@ export const CarDate = styled.span`
 `;
 
 export const CarDescription = styled.div`
+  position: relative;
+
   label {
     font-size: var(--text-xsmall);
     color: var(--clr-grey-500);
   }
+`;
 
-  & > p {
+export const CarDescriptionParagraphs = styled.div`
+  & p {
     line-height: 1.5;
     color: var(--clr-grey-500);
     margin-bottom: var(--spacing-small);
     font-size: var(--text-base);
+
+    display: flex;
+    &:before {
+      content: "✍";
+      margin-right: var(--spacing-xsmall);
+    }
+  }
+
+  @media (min-width: 768px) {
+    position: relative;
+    height: 5ch;
+    overflow: hidden;
+    pointer-events: none;
+
+    & p {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    & span {
+      pointer-events: auto;
+
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: var(--clr-grey-200);
+      color: var(--clr-grey-700);
+
+      padding: var(--spacing-xsmall);
+
+      &:after {
+        content: "More";
+      }
+    }
+
+    &:hover {
+      overflow: visible;
+
+      & .overflow-container {
+        background: var(--clr-grey-100);
+        padding: var(--spacing-regular) var(--spacing-small);
+        height: 250px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      & p {
+        display: flex;
+      }
+
+      & p:last-child {
+        margin-top: var(--spacing-base);
+      }
+
+      & span {
+        opacity: 0;
+      }
+    }
   }
 `;
 
