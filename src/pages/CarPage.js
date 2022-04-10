@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-import Nav from "../components/Navbar";
 import Car from "../components/Car";
 import EmptyState from "../components/EmptyState";
 import FilterBarWrapper from "../components/FilterBar";
@@ -92,8 +91,6 @@ export default function CarPage() {
           </LoaderContainer>
         </ModalContainer>
       )}
-
-      <Nav />
 
       <ActionWrapper>
         <h1>Find cars by Make, Model or Keyword</h1>
