@@ -39,7 +39,6 @@ export const ModalContainer = styled.div`
     & svg {
       fill: var(--clr-grey-200);
       width: var(--spacing-medium);
-      display: inline;
     }
   }
 

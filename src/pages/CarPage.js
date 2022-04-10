@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
+import Navbar from "../components/Navbar";
 import Car from "../components/Car";
 import EmptyState from "../components/EmptyState";
 import FilterBarWrapper from "../components/FilterBar";
@@ -24,6 +26,9 @@ export default function CarPage() {
 
   // for responsiveness
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // To navigate to Error page
+  const navigate = useNavigate();
 
   const handleFilter = async () => {
     let options = ["start", "end", "min", "max", "transmission"];
@@ -83,6 +88,8 @@ export default function CarPage() {
 
   return (
     <>
+      <Navbar />
+
       {!cars && (
         <ModalContainer loader>
           <LoaderContainer>
@@ -119,7 +126,7 @@ export default function CarPage() {
 
       {cars && (
         <>
-          {cars.data.length ? (
+          {cars.data?.length ? (
             <>
               <Car
                 cars={cars.data}
@@ -156,6 +163,8 @@ export default function CarPage() {
                 })}
               </Pagination>
             </>
+          ) : cars.message ? (
+            navigate("/error", { replace: true })
           ) : (
             <EmptyState />
           )}
