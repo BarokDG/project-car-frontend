@@ -11,6 +11,7 @@ import {
   CarImage,
   CarDate,
   CarDescription,
+  CarDescriptionParagraphs,
   CarDescriptionGroup,
   CarFooter,
   ActionButton,
@@ -71,6 +72,7 @@ function Car({ cars, sortUtil, updateSortUtil }) {
                   files: images,
                   loan,
                   make,
+                  mileage,
                   model,
                   price,
                   transmission,
@@ -98,8 +100,17 @@ function Car({ cars, sortUtil, updateSortUtil }) {
                       </CarTitle>
                       <CarDate>{year}</CarDate>
                       <CarDescription>
-                        <p>{comment || ""}</p>
-                        <p>{condition || ""}</p>
+                        <CarDescriptionParagraphs>
+                          <div className="overflow-container">
+                            {comment ? <p>{comment}</p> : ""}
+                            {condition ? <p>{condition}</p> : ""}
+                          </div>
+                          {comment.length + condition.length > 64 ? (
+                            <span></span>
+                          ) : (
+                            ""
+                          )}
+                        </CarDescriptionParagraphs>
                         <CarDescriptionGroup>
                           <div>
                             <label>Price</label>
@@ -129,6 +140,10 @@ function Car({ cars, sortUtil, updateSortUtil }) {
                             <label>Transmission</label>
                             <p>{transmission || "N/A"}</p>
                           </div>
+                          <div>
+                            <label>Mileage</label>
+                            <p>{mileage ?? "N/A"}</p>
+                          </div>
                         </CarDescriptionGroup>
                       </CarDescription>
                       <CarFooter>
@@ -140,8 +155,8 @@ function Car({ cars, sortUtil, updateSortUtil }) {
                           }
                           style={
                             window.innerWidth < 600
-                              ? { pointerEvents: "all" }
-                              : { pointerEvents: "text" }
+                              ? { pointerEvents: "auto" }
+                              : { pointerEvents: "none" }
                           }
                         >
                           <PhoneIcon />
