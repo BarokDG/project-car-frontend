@@ -91,7 +91,9 @@ export default function Navbar() {
       </Hamburger>
       <Menu isOpen={isOpen}>
         <MenuLink href="/">All Cars</MenuLink>
-        <MenuLink href="/info">Want to sell a car?</MenuLink>
+        <MenuLink onClick={() => alert("clicked")}>
+          Want to sell a car?
+        </MenuLink>
       </Menu>
     </Nav>
   );

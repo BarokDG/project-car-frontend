@@ -16,6 +16,7 @@ import { Loader, LoaderContainer } from "../styles/Loader.style";
 import { ModalContainer } from "../styles/Modal.style";
 
 import { getCarsAPI } from "../data/api";
+import InfoModal from "../components/InfoModal";
 
 export default function CarPage() {
   const [cars, setCars] = useState(null);
@@ -98,6 +99,8 @@ export default function CarPage() {
           </LoaderContainer>
         </ModalContainer>
       )}
+
+      <InfoModal />
 
       <ActionWrapper>
         <h1>Find cars by Make, Model or Keyword</h1>

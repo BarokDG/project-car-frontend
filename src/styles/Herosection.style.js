@@ -292,6 +292,11 @@ export const Pagination = styled.div`
     height: var(--spacing-large);
     width: var(--spacing-large);
     cursor: pointer;
+
+    // Apple support
+    color: var(--clr-grey-900);
+    background: var(--clr-grey-100);
+    border: 1px solid var(--clr-grey-300);
   }
 
   & button.active-page {
