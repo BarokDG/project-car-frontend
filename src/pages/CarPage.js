@@ -20,6 +20,7 @@ import InfoModal from "../components/InfoModal";
 
 export default function CarPage() {
   const [cars, setCars] = useState(null);
+  const [showInfoModal, setShowInfoModal] = useState(false);
 
   // for pagination
   const [pageNumber, setPageNumber] = useState(1);
@@ -28,7 +29,7 @@ export default function CarPage() {
   // for responsiveness
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  // To navigate to Error page
+  // to navigate to Error page
   const navigate = useNavigate();
 
   const handleFilter = async () => {
@@ -89,7 +90,10 @@ export default function CarPage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar openInfoModal={() => setShowInfoModal(true)} />
+      {showInfoModal && (
+        <InfoModal closeInfoModal={() => setShowInfoModal(false)} />
+      )}
 
       {!cars && (
         <ModalContainer loader>
@@ -99,8 +103,6 @@ export default function CarPage() {
           </LoaderContainer>
         </ModalContainer>
       )}
-
-      <InfoModal />
 
       <ActionWrapper>
         <h1>Find cars by Make, Model or Keyword</h1>

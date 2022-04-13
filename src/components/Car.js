@@ -141,8 +141,14 @@ function Car({ cars, sortUtil, updateSortUtil }) {
                             <p>{transmission || "N/A"}</p>
                           </div>
                           <div>
-                            <label>Mileage</label>
-                            <p>{mileage ?? "N/A"}</p>
+                            {typeof mileage === "number" ? (
+                              <>
+                                <label>Mileage</label>
+                                <p>{mileage ?? ""}</p>
+                              </>
+                            ) : (
+                              ""
+                            )}
                           </div>
                         </CarDescriptionGroup>
                       </CarDescription>

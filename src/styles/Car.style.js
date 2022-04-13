@@ -121,7 +121,7 @@ export const CarDescriptionParagraphs = styled.div`
       & .overflow-container {
         background: var(--clr-grey-100);
         padding: var(--spacing-regular) var(--spacing-small);
-        height: 230px;
+        min-height: 230px;
 
         display: flex;
         flex-direction: column;
