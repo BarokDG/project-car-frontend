@@ -26,6 +26,10 @@ export const ActionWrapper = styled.div`
 
       border: 1px solid;
 
+      // Apple support
+      background: var(--clr-grey-100);
+      border-radius: 0;
+
       &:focus,
       &:focus-within {
         outline: none;
@@ -52,14 +56,17 @@ export const ActionWrapper = styled.div`
       padding: var(--spacing-base) var(--spacing-medium);
     }
 
-    & > input[type="submit"] {
+    & .actions__submit {
       order: 1;
       background: var(--clr-primary-600);
       color: var(--clr-primary-100);
     }
 
-    & > button {
+    & .actions__clear {
       padding-right: var(--spacing-regular);
+
+      //Apple support
+      color: var(--clr-grey-700);
     }
   }
 
@@ -207,6 +214,12 @@ export const FilterBarItem = styled.div`
   & select {
     padding: var(--spacing-small) var(--spacing-base);
     margin-right: var(--spacing-xsmall);
+
+    // Apple support
+    background: white;
+    color: var(--clr-grey-700);
+    font-size: var(--text-small);
+    border-radius: 0;
   }
 `;
 
@@ -279,6 +292,11 @@ export const Pagination = styled.div`
     height: var(--spacing-large);
     width: var(--spacing-large);
     cursor: pointer;
+
+    // Apple support
+    color: var(--clr-grey-900);
+    background: var(--clr-grey-100);
+    border: 1px solid var(--clr-grey-300);
   }
 
   & button.active-page {

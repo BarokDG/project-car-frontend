@@ -6,6 +6,8 @@ import {
 
 import { useEffect } from "react";
 
+import { ReactComponent as Close } from "../assets/close.svg";
+
 export default function Modal({ images, closeModal }) {
   let slideIndex = 1;
 
@@ -39,7 +41,7 @@ export default function Modal({ images, closeModal }) {
     <>
       <ModalContainer>
         <button className="close-modal" onClick={closeModal}>
-          &#10006;
+          <Close />
         </button>
         <SlideShowContainer
           onClick={(e) => {

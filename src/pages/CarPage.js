@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-import Nav from "../components/Navbar";
+import Navbar from "../components/Navbar";
 import Car from "../components/Car";
 import EmptyState from "../components/EmptyState";
 import FilterBarWrapper from "../components/FilterBar";
@@ -15,9 +16,11 @@ import { Loader, LoaderContainer } from "../styles/Loader.style";
 import { ModalContainer } from "../styles/Modal.style";
 
 import { getCarsAPI } from "../data/api";
+import InfoModal from "../components/InfoModal";
 
 export default function CarPage() {
   const [cars, setCars] = useState(null);
+  const [showInfoModal, setShowInfoModal] = useState(false);
 
   // for pagination
   const [pageNumber, setPageNumber] = useState(1);
@@ -25,6 +28,9 @@ export default function CarPage() {
 
   // for responsiveness
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // to navigate to Error page
+  const navigate = useNavigate();
 
   const handleFilter = async () => {
     let options = ["start", "end", "min", "max", "transmission"];
@@ -84,6 +90,11 @@ export default function CarPage() {
 
   return (
     <>
+      <Navbar openInfoModal={() => setShowInfoModal(true)} />
+      {showInfoModal && (
+        <InfoModal closeInfoModal={() => setShowInfoModal(false)} />
+      )}
+
       {!cars && (
         <ModalContainer loader>
           <LoaderContainer>
@@ -92,8 +103,6 @@ export default function CarPage() {
           </LoaderContainer>
         </ModalContainer>
       )}
-
-      <Nav />
 
       <ActionWrapper>
         <h1>Find cars by Make, Model or Keyword</h1>
@@ -106,8 +115,10 @@ export default function CarPage() {
         >
           <input type="search" name="search" placeholder="Enter keywords..." />
           <div className="actions">
-            <input type="submit" value="Search" />
-            <button onClick={clearFilter}>Clear</button>
+            <input type="submit" value="Search" className="actions__submit" />
+            <button onClick={clearFilter} className="actions__clear">
+              Clear
+            </button>
           </div>
         </form>
 
@@ -120,7 +131,7 @@ export default function CarPage() {
 
       {cars && (
         <>
-          {cars.data.length ? (
+          {cars.data?.length ? (
             <>
               <Car
                 cars={cars.data}
@@ -157,6 +168,8 @@ export default function CarPage() {
                 })}
               </Pagination>
             </>
+          ) : cars.message ? (
+            navigate("/error", { replace: true })
           ) : (
             <EmptyState />
           )}
