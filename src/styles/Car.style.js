@@ -28,10 +28,12 @@ export const CarsWrapper = styled.div`
 `;
 
 export const CarContainer = styled.div`
-  background: white;
+  background: var(--clr-grey-50);
   display: flex;
   flex-direction: column;
   padding: var(--spacing-small);
+
+  border-radius: var(--spacing-xsmall);
 `;
 
 export const CarDetails = styled.div`
@@ -127,7 +129,8 @@ export const CarDescriptionParagraphs = styled.div`
         flex-direction: column;
         justify-content: center;
 
-        overflow: auto;
+        position: relative;
+        z-index: 2;
       }
 
       & p {
@@ -200,6 +203,8 @@ export const CarImage = styled.img`
   height: 200px;
   object-fit: cover;
   width: 100%;
+
+  border-radius: var(--spacing-xsmall);
 `;
 
 export const CarFooter = styled.div`
