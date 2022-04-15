@@ -144,7 +144,7 @@ function Car({ cars, sortUtil, updateSortUtil }) {
                             {typeof mileage === "number" ? (
                               <>
                                 <label>Mileage</label>
-                                <p>{mileage ?? ""}</p>
+                                <p>{mileage + " Kms" ?? ""}</p>
                               </>
                             ) : (
                               ""

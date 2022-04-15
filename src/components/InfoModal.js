@@ -37,7 +37,7 @@ export default function InfoModal({ closeInfoModal }) {
             </li>
           </ol>
           <a href="https://t.me/i102020" target="_blank" rel="noreferrer">
-            Channel
+            Telegram Channel
             <Telegram />
           </a>
         </div>

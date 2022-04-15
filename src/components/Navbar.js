@@ -16,7 +16,6 @@ export default function Navbar({ openInfoModal }) {
         <span />
       </Hamburger>
       <Menu isOpen={isOpen}>
-        <MenuLink href="/">All Cars</MenuLink>
         <MenuLink onClick={openInfoModal}>Want to sell a car?</MenuLink>
       </Menu>
     </Nav>
