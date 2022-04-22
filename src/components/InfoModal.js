@@ -21,11 +21,11 @@ export default function InfoModal({ closeInfoModal }) {
       </button>
       <InfoModalWrapper>
         <div className="info__content">
-          <h3>መኪና ለመሸጥ</h3>
+          <h3>የሚሸጡት ወይም የሚለውጡት መኪና ካሎት :-</h3>
           <ol>
             <li>በሁሉም አቅጣጫ ውስጡን ጨምሮ በግልጽ የሚያሳይ ፎቶ ያንሱ</li>
             <li>
-              ሁሉንም አስፈላጊ መረጃ በማያያዝ Telegram ላይ በ
+              ሁሉንም አስፈላጊ መረጃ በማያያዝ እዚህ ላይ - 
               <a href="https://t.me/getzauto" target="_blank" rel="noreferrer">
                 @Getzauto
               </a>
@@ -33,7 +33,7 @@ export default function InfoModal({ closeInfoModal }) {
               <a href="https://t.me/getzauto2" target="_blank" rel="noreferrer">
                 @Getzauto2
               </a>
-              ይላኩልን (የሚልኩልን ዋጋ የፍተሻ ዋጋ ነዉ)
+              ተጭነው ይላኩልን (የሚልኩልን ዋጋ የፍተሻ ዋጋ ነዉ)
             </li>
           </ol>
           <a href="https://t.me/i102020" target="_blank" rel="noreferrer">
