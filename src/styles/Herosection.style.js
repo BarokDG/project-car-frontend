@@ -71,7 +71,7 @@ export const ActionWrapper = styled.div`
   }
 
   & > .open-filter {
-    --button-clr: black;
+    --button-clr: var(--clr-primary-700);
     padding: var(--spacing-small);
     align-self: start;
     background: none;
@@ -165,17 +165,19 @@ export const FilterBar = styled.div`
       border: none;
       background: none;
       display: block;
-      margin-bottom: var(--spacing-base);
+      margin-bottom: var(--spacing-xsmall);
 
       & label {
-        font-size: var(--text-base);
+        font-size: var(--text-small);
+        color: var(--clr-grey-600);
       }
 
       & select {
         display: block;
         width: 100%;
-        padding: var(--spacing-base);
+        padding: var(--spacing-small) var(--spacing-base);
         margin-bottom: var(--spacing-small);
+        font-size: var(--text-base);
       }
     }
 
@@ -308,9 +310,10 @@ export const Pagination = styled.div`
 `;
 
 export const BackToTop = styled.div`
+  visibility: hidden;
   position: fixed;
-  right: var(--spacing-medium);
-  bottom: var(--spacing-regular);
+  right: var(--spacing-base);
+  bottom: var(--spacing-medium);
 
   width: var(--spacing-large);
   height: var(--spacing-large);

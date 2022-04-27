@@ -79,11 +79,10 @@ export const ModalContainer = styled.div`
       & > h3 {
         background: var(--clr-primary-100);
         color: var(--clr-grey-900);
-        font-size: var(--text-regular);
+        font-size: var(--text-base);
         font-weight: 400;
         margin-bottom: 0;
-        padding: var(--spacing-regular);
-        padding-bottom: var(--spacing-base);
+        padding: var(--spacing-base) var(--spacing-regular);
       }
 
       & > .filter-apply {
@@ -93,7 +92,7 @@ export const ModalContainer = styled.div`
         & > button {
           border: none;
           background: none;
-          padding: var(--spacing-base) var(--spacing-medium);
+          padding: var(--spacing-base) var(--spacing-large);
           cursor: pointer;
         }
 

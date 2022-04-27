@@ -7,6 +7,8 @@ import EmptyState from "../components/EmptyState";
 import FilterBarWrapper from "../components/FilterBar";
 import MobileFilterBarWrapper from "../components/MobileFilterBar";
 
+import InfoModal from "../components/InfoModal";
+
 import {
   ActionWrapper,
   Pagination,
@@ -16,7 +18,6 @@ import { Loader, LoaderContainer } from "../styles/Loader.style";
 import { ModalContainer } from "../styles/Modal.style";
 
 import { getCarsAPI } from "../data/api";
-import InfoModal from "../components/InfoModal";
 
 export default function CarPage() {
   const [cars, setCars] = useState(null);
@@ -88,6 +89,22 @@ export default function CarPage() {
     };
   }, []);
 
+  useEffect(() => {
+    const revealBackToTopButton = () => {
+      if (document.documentElement.scrollTop > 20) {
+        document.querySelector(".back-to-top").style.visibility = "visible";
+      } else {
+        document.querySelector(".back-to-top").style.visibility = "hidden";
+      }
+    };
+
+    window.addEventListener("scroll", revealBackToTopButton);
+
+    return function cleanup() {
+      window.removeEventListener("scroll", revealBackToTopButton);
+    };
+  }, []);
+
   return (
     <>
       <Navbar openInfoModal={() => setShowInfoModal(true)} />
@@ -140,6 +157,7 @@ export default function CarPage() {
               />
               {windowWidth < 768 && (
                 <BackToTop
+                  className="back-to-top"
                   onClick={() =>
                     window.scrollTo({
                       top: 0,
