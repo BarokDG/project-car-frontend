@@ -3,7 +3,8 @@ import {
   InfoModalWrapper,
 } from "../styles/Infomodal.style";
 
-import CarCollage from "../assets/car-collage.png";
+import CarCollage from "../assets/car-collage.webp";
+import CarCollageFallBack from "../assets/car-collage.png";
 import { ReactComponent as Telegram } from "../assets/telegram.svg";
 import { ReactComponent as Close } from "../assets/close.svg";
 
@@ -25,7 +26,8 @@ export default function InfoModal({ closeInfoModal }) {
           <ol>
             <li>በሁሉም አቅጣጫ ውስጡን ጨምሮ በግልጽ የሚያሳይ ፎቶ ያንሱ</li>
             <li>
-              ሁሉንም አስፈላጊ መረጃ በማያያዝ Telegram ላይ በ
+              ሁሉንም አስፈላጊ መረጃ በማያያዝ{" "}
+              <span style={{ fontWeight: 500 }}>Telegram</span> ላይ በ
               <a href="https://t.me/getzauto" target="_blank" rel="noreferrer">
                 @Getzauto
               </a>
@@ -42,7 +44,11 @@ export default function InfoModal({ closeInfoModal }) {
           </a>
         </div>
         <div className="info__image">
-          <img src={CarCollage} alt="" />
+          <picture>
+            <source srcset={CarCollage} type="image/webp" />
+            <source srcset={CarCollageFallBack} type="image/png" />
+            <img src={CarCollageFallBack} alt="" />
+          </picture>
         </div>
       </InfoModalWrapper>
     </InfoModalContainer>

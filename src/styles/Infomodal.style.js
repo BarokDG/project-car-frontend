@@ -1,5 +1,6 @@
 import { ModalContainer } from "../styles/Modal.style";
 
+import Check from "../assets/check.svg";
 import styled from "styled-components";
 
 export const InfoModalContainer = styled(ModalContainer)`
@@ -19,18 +20,24 @@ export const InfoModalWrapper = styled.div`
     flex: 1 0 0;
     padding: var(--spacing-large) 3vw;
     background: var(--clr-primary-100);
-    font-weight: 100;
+    color: var(--clr-primary-700);
 
     display: flex;
     flex-direction: column;
 
+    h3 {
+      color: var(--clr-primary-600);
+      font-weight: 500;
+      margin-bottom: var(--spacing-regular);
+    }
+
     ol {
       padding: 0;
       padding-left: var(--spacing-regular);
+      list-style: url(${Check});
     }
 
     li {
-      list-style-type: "✅";
       padding-left: var(--spacing-small);
 
       margin: var(--spacing-regular) 0;

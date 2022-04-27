@@ -170,6 +170,7 @@ export const CarDescriptionGroup = styled.div`
 
 export const CarImageContainer = styled.div`
   position: relative;
+  cursor: pointer;
 
   & > button {
     position: absolute;
@@ -178,7 +179,9 @@ export const CarImageContainer = styled.div`
     border: none;
     padding: var(--spacing-small);
 
-    background: var(--clr-grey-600);
+    cursor: pointer;
+
+    background: var(--clr-grey-700);
 
     display: flex;
 
