@@ -28,7 +28,7 @@ export default function InfoModal({ showInfoModal, closeInfoModal }) {
               <li>በሁሉም አቅጣጫ ውስጡን ጨምሮ በግልጽ የሚያሳይ ፎቶ ያንሱ</li>
               <li>
                 ሁሉንም አስፈላጊ መረጃ በማያያዝ{" "}
-                <span style={{ fontWeight: 500 }}>Telegram</span> ላይ በ
+                <span style={{ fontWeight: 500 }}>Telegram</span> ላይ -- 
                 <a
                   href="https://t.me/getzauto"
                   target="_blank"
@@ -44,7 +44,7 @@ export default function InfoModal({ showInfoModal, closeInfoModal }) {
                 >
                   @Getzauto2
                 </a>
-                ይላኩልን (የሚልኩልን ዋጋ የፍተሻ ዋጋ ነዉ)
+                በመጫን ይላኩልን (የሚልኩልን ዋጋ የፍተሻ ዋጋ ነዉ)
               </li>
             </ol>
             <a href="https://t.me/i102020" target="_blank" rel="noreferrer">

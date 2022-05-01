@@ -39,6 +39,9 @@ export const MenuLink = styled.a`
   background: #cbcdfba0;
   border-radius: var(--spacing-base);
 
+  margin-left: auto;
+  margin-right: auto;
+
   &:hover {
     background: #cbcdfb70;
   }
