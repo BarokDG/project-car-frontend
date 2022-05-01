@@ -6,12 +6,13 @@ import Car from "../components/Car";
 import EmptyState from "../components/EmptyState";
 import FilterBarWrapper from "../components/FilterBar";
 import MobileFilterBarWrapper from "../components/MobileFilterBar";
+import Pagination from "../components/Pagination";
 
 import InfoModal from "../components/InfoModal";
 
 import {
   ActionWrapper,
-  Pagination,
+  // Pagination,
   BackToTop,
 } from "../styles/Herosection.style";
 import { Loader, LoaderContainer } from "../styles/Loader.style";
@@ -165,26 +166,12 @@ export default function CarPage() {
                   })
                 }
               />
-              )
-              <Pagination>
-                {[
-                  ...new Array(
-                    Math.ceil(cars.amountOfCars / cars.itemsPerPage)
-                  ),
-                ].map((item, index) => {
-                  return (
-                    <button
-                      key={index}
-                      className={pageNumber === index + 1 ? "active-page" : ""}
-                      onClick={() => {
-                        setPageNumber(index + 1);
-                      }}
-                    >
-                      {index + 1}
-                    </button>
-                  );
-                })}
-              </Pagination>
+              <Pagination
+                currentPage={pageNumber}
+                onPageChange={(page) => setPageNumber(page)}
+                pageSize={cars.itemsPerPage}
+                totalCount={cars.amountOfCars}
+              />
             </>
           ) : cars.message ? (
             navigate("/error", { replace: true })
