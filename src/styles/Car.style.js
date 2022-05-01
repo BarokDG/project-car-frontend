@@ -242,3 +242,30 @@ export const ActionButton = styled.a`
     margin-right: var(--spacing-small);
   }
 `;
+
+export const BackToTop = styled.div`
+  display: none;
+  position: fixed;
+  right: var(--spacing-base);
+  bottom: var(--spacing-large);
+
+  width: var(--spacing-large);
+  height: var(--spacing-large);
+  background: var(--clr-primary-200);
+  border-radius: 50%;
+  border: 1px solid;
+
+  text-align: center;
+  font-size: var(--text-medium);
+  line-height: var(--spacing-medium);
+  cursor: pointer;
+
+  &:after {
+    content: "↑";
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+    visibility: hidden;
+  }
+`;

@@ -1,7 +1,7 @@
 import React from "react";
 import { usePagination, DOTS } from "./usePagination";
 
-import { Pagination } from "../styles/Herosection.style";
+import { Pagination } from "../styles/Pagination.style";
 
 const PaginationComp = ({
   currentPage,

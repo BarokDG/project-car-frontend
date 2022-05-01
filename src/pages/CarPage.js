@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Navbar from "../components/Navbar";
 import Car from "../components/Car";
 import EmptyState from "../components/EmptyState";
 import FilterBarWrapper from "../components/FilterBar";
 import MobileFilterBarWrapper from "../components/MobileFilterBar";
+import Navbar from "../components/Navbar";
 import Pagination from "../components/Pagination";
 
 import InfoModal from "../components/InfoModal";
 
-import {
-  ActionWrapper,
-  // Pagination,
-  BackToTop,
-} from "../styles/Herosection.style";
+import { ActionWrapper } from "../styles/Herosection.style";
+import { BackToTop } from "../styles/Car.style";
 import { Loader, LoaderContainer } from "../styles/Loader.style";
 import { ModalContainer } from "../styles/Modal.style";
 
