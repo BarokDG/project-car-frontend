@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import Navbar from "../components/Navbar";
 import Car from "../components/Car";
 import EmptyState from "../components/EmptyState";
 import FilterBarWrapper from "../components/FilterBar";
 import MobileFilterBarWrapper from "../components/MobileFilterBar";
+import Navbar from "../components/Navbar";
+import Pagination from "../components/Pagination";
 
-import {
-  ActionWrapper,
-  Pagination,
-  BackToTop,
-} from "../styles/Herosection.style";
+import InfoModal from "../components/InfoModal";
+
+import { ActionWrapper } from "../styles/Herosection.style";
+import { BackToTop } from "../styles/Car.style";
 import { Loader, LoaderContainer } from "../styles/Loader.style";
 import { ModalContainer } from "../styles/Modal.style";
 
 import { getCarsAPI } from "../data/api";
-import InfoModal from "../components/InfoModal";
 
 export default function CarPage() {
   const [cars, setCars] = useState(null);
@@ -88,12 +87,29 @@ export default function CarPage() {
     };
   }, []);
 
+  useEffect(() => {
+    const revealBackToTopButton = () => {
+      if (document.documentElement.scrollTop > 20) {
+        document.querySelector(".back-to-top").style.visibility = "visible";
+      } else {
+        document.querySelector(".back-to-top").style.visibility = "hidden";
+      }
+    };
+
+    window.addEventListener("scroll", revealBackToTopButton);
+
+    return function cleanup() {
+      window.removeEventListener("scroll", revealBackToTopButton);
+    };
+  }, []);
+
   return (
     <>
       <Navbar openInfoModal={() => setShowInfoModal(true)} />
-      {showInfoModal && (
-        <InfoModal closeInfoModal={() => setShowInfoModal(false)} />
-      )}
+      <InfoModal
+        showInfoModal={showInfoModal}
+        closeInfoModal={() => setShowInfoModal(false)}
+      />
 
       {!cars && (
         <ModalContainer loader>
@@ -138,35 +154,21 @@ export default function CarPage() {
                 sortUtil={filterRules}
                 updateSortUtil={setFilterRules}
               />
-              {windowWidth < 768 && (
-                <BackToTop
-                  onClick={() =>
-                    window.scrollTo({
-                      top: 0,
-                      behavior: "smooth",
-                    })
-                  }
-                />
-              )}
-              <Pagination>
-                {[
-                  ...new Array(
-                    Math.ceil(cars.amountOfCars / cars.itemsPerPage)
-                  ),
-                ].map((item, index) => {
-                  return (
-                    <button
-                      key={index}
-                      className={pageNumber === index + 1 ? "active-page" : ""}
-                      onClick={() => {
-                        setPageNumber(index + 1);
-                      }}
-                    >
-                      {index + 1}
-                    </button>
-                  );
-                })}
-              </Pagination>
+              <BackToTop
+                className="back-to-top"
+                onClick={() =>
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  })
+                }
+              />
+              <Pagination
+                currentPage={pageNumber}
+                onPageChange={(page) => setPageNumber(page)}
+                pageSize={cars.itemsPerPage}
+                totalCount={cars.amountOfCars}
+              />
             </>
           ) : cars.message ? (
             navigate("/error", { replace: true })

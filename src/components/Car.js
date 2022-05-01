@@ -82,14 +82,14 @@ function Car({ cars, sortUtil, updateSortUtil }) {
               ) => {
                 return (
                   <CarContainer key={index}>
-                    <CarImageContainer>
+                    <CarImageContainer
+                      onClick={() => {
+                        setModalImages(images);
+                        setShowModal(true);
+                      }}
+                    >
                       <CarImage src={images[0]} />
-                      <button
-                        onClick={() => {
-                          setModalImages(images);
-                          setShowModal(true);
-                        }}
-                      >
+                      <button>
                         <ImageIcon />
                         <span>More pictures</span>
                       </button>
@@ -182,9 +182,12 @@ function Car({ cars, sortUtil, updateSortUtil }) {
           </CarsWrapper>
         </>
       )}
-      {showModal && (
-        <Modal images={modalImages} closeModal={() => setShowModal(false)} />
-      )}
+
+      <Modal
+        images={modalImages}
+        showModal={showModal}
+        closeModal={() => setShowModal(false)}
+      />
     </>
   );
 }

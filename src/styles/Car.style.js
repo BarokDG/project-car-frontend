@@ -170,6 +170,7 @@ export const CarDescriptionGroup = styled.div`
 
 export const CarImageContainer = styled.div`
   position: relative;
+  cursor: pointer;
 
   & > button {
     position: absolute;
@@ -178,7 +179,9 @@ export const CarImageContainer = styled.div`
     border: none;
     padding: var(--spacing-small);
 
-    background: var(--clr-grey-600);
+    cursor: pointer;
+
+    background: var(--clr-grey-700);
 
     display: flex;
 
@@ -237,5 +240,33 @@ export const ActionButton = styled.a`
   & svg {
     width: 20px;
     margin-right: var(--spacing-small);
+  }
+`;
+
+export const BackToTop = styled.div`
+  --square-size: var(--spacing-large);
+  display: none;
+  position: fixed;
+  right: var(--spacing-base);
+  bottom: var(--spacing-regular);
+
+  width: var(--square-size);
+  height: var(--square-size);
+  background: var(--clr-primary-200);
+  border-radius: 50%;
+  border: 1px solid;
+
+  text-align: center;
+  font-size: var(--text-large);
+  line-height: var(--spacing-medium);
+  cursor: pointer;
+
+  &:after {
+    content: "↑";
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+    visibility: hidden;
   }
 `;

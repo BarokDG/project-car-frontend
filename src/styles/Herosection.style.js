@@ -71,7 +71,7 @@ export const ActionWrapper = styled.div`
   }
 
   & > .open-filter {
-    --button-clr: black;
+    --button-clr: var(--clr-primary-700);
     padding: var(--spacing-small);
     align-self: start;
     background: none;
@@ -165,17 +165,19 @@ export const FilterBar = styled.div`
       border: none;
       background: none;
       display: block;
-      margin-bottom: var(--spacing-base);
+      margin-bottom: var(--spacing-xsmall);
 
       & label {
-        font-size: var(--text-base);
+        font-size: var(--text-small);
+        color: var(--clr-grey-600);
       }
 
       & select {
         display: block;
         width: 100%;
-        padding: var(--spacing-base);
+        padding: var(--spacing-small) var(--spacing-base);
         margin-bottom: var(--spacing-small);
+        font-size: var(--text-base);
       }
     }
 
@@ -278,52 +280,5 @@ export const Switch = styled.div`
     height: 12px;
 
     background: var(--clr-grey-100);
-  }
-`;
-
-export const Pagination = styled.div`
-  margin-top: var(--spacing-xlarge);
-
-  display: flex;
-  justify-content: center;
-
-  & > button {
-    margin: 0 var(--spacing-small);
-    height: var(--spacing-large);
-    width: var(--spacing-large);
-    cursor: pointer;
-
-    // Apple support
-    color: var(--clr-grey-900);
-    background: var(--clr-grey-100);
-    border: 1px solid var(--clr-grey-300);
-  }
-
-  & button.active-page {
-    background: var(--clr-primary-500);
-    border: none;
-    color: var(--clr-primary-100);
-    font-weight: 700;
-  }
-`;
-
-export const BackToTop = styled.div`
-  position: fixed;
-  right: var(--spacing-medium);
-  bottom: var(--spacing-regular);
-
-  width: var(--spacing-large);
-  height: var(--spacing-large);
-  background: var(--clr-primary-200);
-  border-radius: 50%;
-  border: 1px solid;
-
-  text-align: center;
-  font-size: var(--text-medium);
-  line-height: var(--spacing-medium);
-  cursor: pointer;
-
-  &:after {
-    content: "↑";
   }
 `;

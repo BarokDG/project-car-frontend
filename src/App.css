@@ -2,6 +2,7 @@
 
 :root {
   /* spacing */
+  --spacing-xxsmall: 1px;
   --spacing-xsmall: 3px;
   --spacing-small: 5px;
   --spacing-base: 10px;
@@ -59,5 +60,6 @@
 @media (max-width: 768px) {
   #root {
     padding: var(--spacing-base);
+    padding-bottom: var(--spacing-large);
   }
 }
