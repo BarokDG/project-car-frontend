@@ -182,9 +182,12 @@ function Car({ cars, sortUtil, updateSortUtil }) {
           </CarsWrapper>
         </>
       )}
-      {showModal && (
-        <Modal images={modalImages} closeModal={() => setShowModal(false)} />
-      )}
+
+      <Modal
+        images={modalImages}
+        showModal={showModal}
+        closeModal={() => setShowModal(false)}
+      />
     </>
   );
 }

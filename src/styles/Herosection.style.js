@@ -310,7 +310,7 @@ export const Pagination = styled.div`
 `;
 
 export const BackToTop = styled.div`
-  visibility: hidden;
+  display: none;
   position: fixed;
   right: var(--spacing-base);
   bottom: var(--spacing-medium);
@@ -328,5 +328,10 @@ export const BackToTop = styled.div`
 
   &:after {
     content: "↑";
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+    visibility: hidden;
   }
 `;

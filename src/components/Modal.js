@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 import { ReactComponent as Close } from "../assets/close.svg";
 
-export default function Modal({ images, closeModal }) {
+export default function Modal({ images, showModal, closeModal }) {
   let slideIndex = 1;
 
   useEffect(() => {
@@ -21,6 +21,10 @@ export default function Modal({ images, closeModal }) {
 
   function showSlides(n) {
     let slides = document.getElementsByClassName("slide");
+
+    if (!slides.length) {
+      return;
+    }
 
     if (n > slides.length) {
       slideIndex = 1;
@@ -38,46 +42,48 @@ export default function Modal({ images, closeModal }) {
   }
 
   return (
-    <>
-      <ModalContainer>
-        <button className="close-modal" onClick={closeModal}>
-          <Close />
-        </button>
-        <SlideShowContainer
-          onClick={(e) => {
-            if (e.target === e.currentTarget) {
-              closeModal();
-            }
-          }}
-        >
-          {images.map((image, index) => {
-            return (
-              <>
-                <SlideShowItem className="slide" key={index}>
-                  <div className="slide-position">
-                    {index + 1 + " / " + images.length}
-                  </div>
-                  <img src={image} alt="" />
-                </SlideShowItem>
-              </>
-            );
-          })}
-        </SlideShowContainer>
-        <button
-          className="slide-control"
-          id="prev"
-          onClick={() => plusSlides(-1)}
-        >
-          &#10094;
-        </button>
-        <button
-          className="slide-control"
-          id="next"
-          onClick={() => plusSlides(1)}
-        >
-          &#10095;
-        </button>
-      </ModalContainer>
-    </>
+    showModal && (
+      <>
+        <ModalContainer>
+          <button className="close-modal" onClick={closeModal}>
+            <Close />
+          </button>
+          <SlideShowContainer
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                closeModal();
+              }
+            }}
+          >
+            {images.map((image, index) => {
+              return (
+                <>
+                  <SlideShowItem className="slide" key={index}>
+                    <div className="slide-position">
+                      {index + 1 + " / " + images.length}
+                    </div>
+                    <img src={image} alt="" />
+                  </SlideShowItem>
+                </>
+              );
+            })}
+          </SlideShowContainer>
+          <button
+            className="slide-control"
+            id="prev"
+            onClick={() => plusSlides(-1)}
+          >
+            &#10094;
+          </button>
+          <button
+            className="slide-control"
+            id="next"
+            onClick={() => plusSlides(1)}
+          >
+            &#10095;
+          </button>
+        </ModalContainer>
+      </>
+    )
   );
 }

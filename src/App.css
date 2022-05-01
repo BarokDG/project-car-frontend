@@ -2,6 +2,7 @@
 
 :root {
   /* spacing */
+  --spacing-xxsmall: 1px;
   --spacing-xsmall: 3px;
   --spacing-small: 5px;
   --spacing-base: 10px;

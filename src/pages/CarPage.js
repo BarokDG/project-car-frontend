@@ -108,9 +108,10 @@ export default function CarPage() {
   return (
     <>
       <Navbar openInfoModal={() => setShowInfoModal(true)} />
-      {showInfoModal && (
-        <InfoModal closeInfoModal={() => setShowInfoModal(false)} />
-      )}
+      <InfoModal
+        showInfoModal={showInfoModal}
+        closeInfoModal={() => setShowInfoModal(false)}
+      />
 
       {!cars && (
         <ModalContainer loader>
@@ -155,17 +156,16 @@ export default function CarPage() {
                 sortUtil={filterRules}
                 updateSortUtil={setFilterRules}
               />
-              {windowWidth < 768 && (
-                <BackToTop
-                  className="back-to-top"
-                  onClick={() =>
-                    window.scrollTo({
-                      top: 0,
-                      behavior: "smooth",
-                    })
-                  }
-                />
-              )}
+              <BackToTop
+                className="back-to-top"
+                onClick={() =>
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  })
+                }
+              />
+              )
               <Pagination>
                 {[
                   ...new Array(
