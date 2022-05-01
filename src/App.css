@@ -60,6 +60,6 @@
 @media (max-width: 768px) {
   #root {
     padding: var(--spacing-base);
-    padding-bottom: var(--spacing-medium);
+    padding-bottom: var(--spacing-large);
   }
 }

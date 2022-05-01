@@ -244,19 +244,20 @@ export const ActionButton = styled.a`
 `;
 
 export const BackToTop = styled.div`
+  --square-size: var(--spacing-large);
   display: none;
   position: fixed;
   right: var(--spacing-base);
-  bottom: var(--spacing-large);
+  bottom: var(--spacing-regular);
 
-  width: var(--spacing-large);
-  height: var(--spacing-large);
+  width: var(--square-size);
+  height: var(--square-size);
   background: var(--clr-primary-200);
   border-radius: 50%;
   border: 1px solid;
 
   text-align: center;
-  font-size: var(--text-medium);
+  font-size: var(--text-large);
   line-height: var(--spacing-medium);
   cursor: pointer;
 
